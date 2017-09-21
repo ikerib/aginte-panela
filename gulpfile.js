@@ -67,9 +67,10 @@ baseJS = [
     './app/Resources/assets/js/bootstrap3-wysihtml5.all.min.js',
     './app/Resources/assets/js/jquery.slimscroll.min.js',
     './app/Resources/assets/js/fastclick.min.js',
-    './app/Resources/assets/js/app.js',
+    './app/Resources/assets/js/demoapp.js',
     './app/Resources/assets/js/dashboard.js',
     './app/Resources/assets/js/demo.js',
+    './app/Resources/assets/js/app.js'
 ];
 
 baseCSS = [
@@ -116,7 +117,7 @@ otherJS = [
     './app/Resources/assets/js/libs/bootstrap-datepicker.es.min.js',
     './app/Resources/assets/js/libs/bootstrap-datepicker.eu.min.js',
     './app/Resources/assets/js/example.js',
-    './app/Resources/assets/js/app.js'
+    './app/Resources/assets/js/demoapp.js'
 ];
 otherCSS = [
     './app/Resources/assets/js/bootstrap/dist/css/bootstrap.css',

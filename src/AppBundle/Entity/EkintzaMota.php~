@@ -1,0 +1,68 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * EkintzaMota
+ *
+ * @ORM\Table(name="ekintza_mota")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EkintzaMotaRepository")
+ */
+class EkintzaMota
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     */
+    private $name;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
+
+    /**
+     * @var integer
+     * @Gedmo\SortablePosition
+     * @ORM\Column(name="orden", type="integer", nullable=true)
+     */
+    private $orden;
+
+    /*****************************************************************************************************************/
+    /*** ERLAZIOAK ***************************************************************************************************/
+    /*****************************************************************************************************************/
+
+    
+    public function __toString()
+    {
+        return $this->getFilename();
+    }
+
+
+
+    /*****************************************************************************************************************/
+    /*****************************************************************************************************************/
+    /*****************************************************************************************************************/
+
+}
+

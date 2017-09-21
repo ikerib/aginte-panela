@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block content_header %}<h1>Ekintza Motak <small>Zerrenda</small></h1>{% endblock %}
+
+{% block body %}
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Izena</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ekintzaMotum in ekintzaMotas %}
+            <tr>
+                <td><a href="{{ path('admin_ekintzamota_show', { 'id': ekintzaMotum.id }) }}">{{ ekintzaMotum.name }}</a></td>
+                <td>
+                    <ul class="list-inline">
+                        <li>
+                            <a class="btn" href="{{ path('admin_ekintzamota_edit', { 'id': ekintzaMotum.id }) }}"><i class="fa fa-edit"></i> Aldatu</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-primary" href="{{ path('admin_ekintzamota_new') }}">Berria</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block content_header %}
+    <h1>
+        Ekintza Mota
+        <small>berria</small>
+    </h1>
+{% endblock %}
+            {% block breadcrumb %}
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Ekintza Mota</a></li>
+                    <li class="active">berria</li>
+                </ol>
+            {% endblock %}
+
+{% block body %}
+
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    <br>
+        <input type="submit" value="Gorde" />
+    {{ form_end(form) }}
+
+{% endblock %}

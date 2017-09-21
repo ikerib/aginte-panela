@@ -3,16 +3,17 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints\DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * EkintzaMota
+ * Txostena
  *
- * @ORM\Table(name="ekintza_mota")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EkintzaMotaRepository")
+ * @ORM\Table(name="txostena")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TxostenaRepository")
  */
-class EkintzaMota
+class Txostena
 {
     /**
      * @var int
@@ -26,9 +27,16 @@ class EkintzaMota
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fetxa", type="datetime")
+     */
+    private $fetxa;
 
     /**
      * @Gedmo\Timestampable(on="create")
@@ -54,39 +62,41 @@ class EkintzaMota
     /*****************************************************************************************************************/
 
     /**
-     * @var txostenak[]
+     * @var \AppBundle\Entity\EkintzaMota
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Txostena", mappedBy="txostenamota",cascade={"remove"})
-     * @ORM\OrderBy({"name" = "ASC"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\EkintzaMota", inversedBy="txostenak")
+     * @ORM\JoinColumn(name="ekintzamota_id", referencedColumnName="id",onDelete="CASCADE")
      */
-    private $txostenak;
-
+    private $ekintzamota;
 
     /**
-     * @var ekintzamotadet[]
+     * @var txostenadet[]
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ekintzamotadet", mappedBy="ekintzamota",cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Txostenadet", mappedBy="txostena",cascade={"remove"})
      * @ORM\OrderBy({"name" = "ASC"})
      */
-    private $ekintzamotadet;
+    private $txostenadet;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->txostenadet = new ArrayCollection();
+        $this->fetxa = new \DateTime();
+        $this->created = new \DateTime();
+        $this->updated = new \DateTime();
+        $this->name = "Txostena " . $this->fetxa->format('Y/m/d');
+    }
 
     public function __toString()
     {
         return $this->getName();
     }
 
-    public function __construct()
-    {
-        $this->ekintzamotadet = new ArrayCollection();
-        $this->created = new \DateTime();
-        $this->updated = new \DateTime();
-    }
-
     /*****************************************************************************************************************/
+    /*** FIN ERLAZIOAK ***********************************************************************************************/
     /*****************************************************************************************************************/
-    /*****************************************************************************************************************/
-
-
 
     /**
      * Get id
@@ -103,7 +113,7 @@ class EkintzaMota
      *
      * @param string $name
      *
-     * @return EkintzaMota
+     * @return Txostena
      */
     public function setName($name)
     {
@@ -123,11 +133,35 @@ class EkintzaMota
     }
 
     /**
+     * Set fetxa
+     *
+     * @param \DateTime $fetxa
+     *
+     * @return Txostena
+     */
+    public function setFetxa($fetxa)
+    {
+        $this->fetxa = $fetxa;
+
+        return $this;
+    }
+
+    /**
+     * Get fetxa
+     *
+     * @return \DateTime
+     */
+    public function getFetxa()
+    {
+        return $this->fetxa;
+    }
+
+    /**
      * Set created
      *
      * @param \DateTime $created
      *
-     * @return EkintzaMota
+     * @return Txostena
      */
     public function setCreated($created)
     {
@@ -151,7 +185,7 @@ class EkintzaMota
      *
      * @param \DateTime $updated
      *
-     * @return EkintzaMota
+     * @return Txostena
      */
     public function setUpdated($updated)
     {
@@ -175,7 +209,7 @@ class EkintzaMota
      *
      * @param integer $orden
      *
-     * @return EkintzaMota
+     * @return Txostena
      */
     public function setOrden($orden)
     {
@@ -195,70 +229,60 @@ class EkintzaMota
     }
 
     /**
-     * Add txostenak
+     * Add txostenadet
      *
-     * @param \AppBundle\Entity\Txostena $txostenak
+     * @param \AppBundle\Entity\Txostenadet $txostenadet
      *
-     * @return EkintzaMota
+     * @return Txostena
      */
-    public function addTxostenak(\AppBundle\Entity\Txostena $txostenak)
+    public function addTxostenadet(\AppBundle\Entity\Txostenadet $txostenadet)
     {
-        $this->txostenak[] = $txostenak;
+        $this->txostenadet[] = $txostenadet;
 
         return $this;
     }
 
     /**
-     * Remove txostenak
+     * Remove txostenadet
      *
-     * @param \AppBundle\Entity\Txostena $txostenak
+     * @param \AppBundle\Entity\Txostenadet $txostenadet
      */
-    public function removeTxostenak(\AppBundle\Entity\Txostena $txostenak)
+    public function removeTxostenadet(\AppBundle\Entity\Txostenadet $txostenadet)
     {
-        $this->txostenak->removeElement($txostenak);
+        $this->txostenadet->removeElement($txostenadet);
     }
 
     /**
-     * Get txostenak
+     * Get txostenadet
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getTxostenak()
+    public function getTxostenadet()
     {
-        return $this->txostenak;
+        return $this->txostenadet;
     }
 
     /**
-     * Add ekintzamotadet
+     * Set ekintzamota
      *
-     * @param \AppBundle\Entity\Ekintzamotadet $ekintzamotadet
+     * @param \AppBundle\Entity\EkintzaMota $ekintzamota
      *
-     * @return EkintzaMota
+     * @return Txostena
      */
-    public function addEkintzamotadet(\AppBundle\Entity\Ekintzamotadet $ekintzamotadet)
+    public function setEkintzamota(\AppBundle\Entity\EkintzaMota $ekintzamota = null)
     {
-        $this->ekintzamotadet[] = $ekintzamotadet;
+        $this->ekintzamota = $ekintzamota;
 
         return $this;
     }
 
     /**
-     * Remove ekintzamotadet
+     * Get ekintzamota
      *
-     * @param \AppBundle\Entity\Ekintzamotadet $ekintzamotadet
+     * @return \AppBundle\Entity\EkintzaMota
      */
-    public function removeEkintzamotadet(\AppBundle\Entity\Ekintzamotadet $ekintzamotadet)
+    public function getEkintzamota()
     {
-        $this->ekintzamotadet->removeElement($ekintzamotadet);
-    }
-
-    /**
-     * Get ekintzamotadet
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEkintzamotadet()
-    {
-        return $this->ekintzamotadet;
+        return $this->ekintzamota;
     }
 }

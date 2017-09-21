@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block content_header %}<h1>Txostena<small>Zerrenda</small></h1>{% endblock %}
+
+{% block body %}
+    <h1>Txostenas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Fetxa</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Orden</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for txostena in txostenas %}
+            <tr>
+                <td><a href="{{ path('txostena_show', { 'id': txostena.id }) }}">{{ txostena.id }}</a></td>
+                <td>{{ txostena.name }}</td>
+                <td>{% if txostena.fetxa %}{{ txostena.fetxa|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if txostena.created %}{{ txostena.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if txostena.updated %}{{ txostena.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ txostena.orden }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('txostena_show', { 'id': txostena.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('txostena_edit', { 'id': txostena.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('txostena_new') }}">Create a new txostena</a>
+        </li>
+    </ul>
+{% endblock %}

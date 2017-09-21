@@ -2,17 +2,17 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * EkintzaMota
+ * Txostenadet
  *
- * @ORM\Table(name="ekintza_mota")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EkintzaMotaRepository")
+ * @ORM\Table(name="txostenadet")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TxostenadetRepository")
  */
-class EkintzaMota
+class Txostenadet
 {
     /**
      * @var int
@@ -26,7 +26,7 @@ class EkintzaMota
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
@@ -54,38 +54,37 @@ class EkintzaMota
     /*****************************************************************************************************************/
 
     /**
-     * @var txostenak[]
+     * @var \AppBundle\Entity\Txostena
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Txostena", mappedBy="txostenamota",cascade={"remove"})
-     * @ORM\OrderBy({"name" = "ASC"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Txostena", inversedBy="txostenadet")
+     * @ORM\JoinColumn(name="txostena_id", referencedColumnName="id",onDelete="CASCADE")
      */
-    private $txostenak;
-
+    private $txostena;
 
     /**
-     * @var ekintzamotadet[]
+     * @var txostenadetval[]
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ekintzamotadet", mappedBy="ekintzamota",cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Txostenadetval", mappedBy="txostenadet",cascade={"remove"})
      * @ORM\OrderBy({"name" = "ASC"})
      */
-    private $ekintzamotadet;
+    private $txostenadetval;
 
     public function __toString()
     {
-        return $this->getName();
+        return (string) $this->getName();
     }
 
     public function __construct()
     {
-        $this->ekintzamotadet = new ArrayCollection();
+        $this->txostenadetval = new ArrayCollection();
         $this->created = new \DateTime();
         $this->updated = new \DateTime();
+        $this->name = "Balioa =>" . $this->txostena;
     }
 
     /*****************************************************************************************************************/
+    /*** FIN ERLAZIOAK ***********************************************************************************************/
     /*****************************************************************************************************************/
-    /*****************************************************************************************************************/
-
 
 
     /**
@@ -103,7 +102,7 @@ class EkintzaMota
      *
      * @param string $name
      *
-     * @return EkintzaMota
+     * @return Txostenadet
      */
     public function setName($name)
     {
@@ -127,7 +126,7 @@ class EkintzaMota
      *
      * @param \DateTime $created
      *
-     * @return EkintzaMota
+     * @return Txostenadet
      */
     public function setCreated($created)
     {
@@ -151,7 +150,7 @@ class EkintzaMota
      *
      * @param \DateTime $updated
      *
-     * @return EkintzaMota
+     * @return Txostenadet
      */
     public function setUpdated($updated)
     {
@@ -175,7 +174,7 @@ class EkintzaMota
      *
      * @param integer $orden
      *
-     * @return EkintzaMota
+     * @return Txostenadet
      */
     public function setOrden($orden)
     {
@@ -195,70 +194,60 @@ class EkintzaMota
     }
 
     /**
-     * Add txostenak
+     * Set txostena
      *
-     * @param \AppBundle\Entity\Txostena $txostenak
+     * @param \AppBundle\Entity\Txostena $txostena
      *
-     * @return EkintzaMota
+     * @return Txostenadet
      */
-    public function addTxostenak(\AppBundle\Entity\Txostena $txostenak)
+    public function setTxostena(\AppBundle\Entity\Txostena $txostena = null)
     {
-        $this->txostenak[] = $txostenak;
+        $this->txostena = $txostena;
 
         return $this;
     }
 
     /**
-     * Remove txostenak
+     * Get txostena
      *
-     * @param \AppBundle\Entity\Txostena $txostenak
+     * @return \AppBundle\Entity\Txostena
      */
-    public function removeTxostenak(\AppBundle\Entity\Txostena $txostenak)
+    public function getTxostena()
     {
-        $this->txostenak->removeElement($txostenak);
+        return $this->txostena;
     }
 
     /**
-     * Get txostenak
+     * Add txostenadetval
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param \AppBundle\Entity\Txostenadetval $txostenadetval
+     *
+     * @return Txostenadet
      */
-    public function getTxostenak()
+    public function addTxostenadetval(\AppBundle\Entity\Txostenadetval $txostenadetval)
     {
-        return $this->txostenak;
-    }
-
-    /**
-     * Add ekintzamotadet
-     *
-     * @param \AppBundle\Entity\Ekintzamotadet $ekintzamotadet
-     *
-     * @return EkintzaMota
-     */
-    public function addEkintzamotadet(\AppBundle\Entity\Ekintzamotadet $ekintzamotadet)
-    {
-        $this->ekintzamotadet[] = $ekintzamotadet;
+        $this->txostenadetval[] = $txostenadetval;
 
         return $this;
     }
 
     /**
-     * Remove ekintzamotadet
+     * Remove txostenadetval
      *
-     * @param \AppBundle\Entity\Ekintzamotadet $ekintzamotadet
+     * @param \AppBundle\Entity\Txostenadetval $txostenadetval
      */
-    public function removeEkintzamotadet(\AppBundle\Entity\Ekintzamotadet $ekintzamotadet)
+    public function removeTxostenadetval(\AppBundle\Entity\Txostenadetval $txostenadetval)
     {
-        $this->ekintzamotadet->removeElement($ekintzamotadet);
+        $this->txostenadetval->removeElement($txostenadetval);
     }
 
     /**
-     * Get ekintzamotadet
+     * Get txostenadetval
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEkintzamotadet()
+    public function getTxostenadetval()
     {
-        return $this->ekintzamotadet;
+        return $this->txostenadetval;
     }
 }

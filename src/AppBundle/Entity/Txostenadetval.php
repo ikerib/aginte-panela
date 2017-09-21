@@ -4,15 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * EkintzaMota
+ * Txostenadetval
  *
- * @ORM\Table(name="ekintza_mota")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EkintzaMotaRepository")
+ * @ORM\Table(name="txostenadetval")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TxostenadetvalRepository")
  */
-class EkintzaMota
+class Txostenadetval
 {
     /**
      * @var int
@@ -26,9 +25,23 @@ class EkintzaMota
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="value", type="string", length=255, nullable=true)
+     */
+    private $value;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mota", type="string", length=255)
+     */
+    private $mota;
 
     /**
      * @Gedmo\Timestampable(on="create")
@@ -54,38 +67,28 @@ class EkintzaMota
     /*****************************************************************************************************************/
 
     /**
-     * @var txostenak[]
+     * @var \AppBundle\Entity\Txostenadet
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Txostena", mappedBy="txostenamota",cascade={"remove"})
-     * @ORM\OrderBy({"name" = "ASC"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Txostenadet", inversedBy="txostenadetval")
+     * @ORM\JoinColumn(name="txostenadet_id", referencedColumnName="id",onDelete="CASCADE")
      */
-    private $txostenak;
-
-
-    /**
-     * @var ekintzamotadet[]
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ekintzamotadet", mappedBy="ekintzamota",cascade={"remove"})
-     * @ORM\OrderBy({"name" = "ASC"})
-     */
-    private $ekintzamotadet;
+    private $txostenadet;
 
     public function __toString()
     {
-        return $this->getName();
+        return (string) $this->getName();
     }
 
     public function __construct()
     {
-        $this->ekintzamotadet = new ArrayCollection();
         $this->created = new \DateTime();
         $this->updated = new \DateTime();
+        $this->name = "Detailea =>" . $this->txostena;
     }
 
     /*****************************************************************************************************************/
+    /*** FIN ERLAZIOAK ***********************************************************************************************/
     /*****************************************************************************************************************/
-    /*****************************************************************************************************************/
-
 
 
     /**
@@ -103,7 +106,7 @@ class EkintzaMota
      *
      * @param string $name
      *
-     * @return EkintzaMota
+     * @return Txostenadetval
      */
     public function setName($name)
     {
@@ -127,7 +130,7 @@ class EkintzaMota
      *
      * @param \DateTime $created
      *
-     * @return EkintzaMota
+     * @return Txostenadetval
      */
     public function setCreated($created)
     {
@@ -151,7 +154,7 @@ class EkintzaMota
      *
      * @param \DateTime $updated
      *
-     * @return EkintzaMota
+     * @return Txostenadetval
      */
     public function setUpdated($updated)
     {
@@ -175,7 +178,7 @@ class EkintzaMota
      *
      * @param integer $orden
      *
-     * @return EkintzaMota
+     * @return Txostenadetval
      */
     public function setOrden($orden)
     {
@@ -195,70 +198,74 @@ class EkintzaMota
     }
 
     /**
-     * Add txostenak
+     * Set txostenadet
      *
-     * @param \AppBundle\Entity\Txostena $txostenak
+     * @param \AppBundle\Entity\Txostenadet $txostenadet
      *
-     * @return EkintzaMota
+     * @return Txostenadetval
      */
-    public function addTxostenak(\AppBundle\Entity\Txostena $txostenak)
+    public function setTxostenadet(\AppBundle\Entity\Txostenadet $txostenadet = null)
     {
-        $this->txostenak[] = $txostenak;
+        $this->txostenadet = $txostenadet;
 
         return $this;
     }
 
     /**
-     * Remove txostenak
+     * Get txostenadet
      *
-     * @param \AppBundle\Entity\Txostena $txostenak
+     * @return \AppBundle\Entity\Txostenadet
      */
-    public function removeTxostenak(\AppBundle\Entity\Txostena $txostenak)
+    public function getTxostenadet()
     {
-        $this->txostenak->removeElement($txostenak);
+        return $this->txostenadet;
     }
 
     /**
-     * Get txostenak
+     * Set value
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param string $value
+     *
+     * @return Txostenadetval
      */
-    public function getTxostenak()
+    public function setValue($value)
     {
-        return $this->txostenak;
-    }
-
-    /**
-     * Add ekintzamotadet
-     *
-     * @param \AppBundle\Entity\Ekintzamotadet $ekintzamotadet
-     *
-     * @return EkintzaMota
-     */
-    public function addEkintzamotadet(\AppBundle\Entity\Ekintzamotadet $ekintzamotadet)
-    {
-        $this->ekintzamotadet[] = $ekintzamotadet;
+        $this->value = $value;
 
         return $this;
     }
 
     /**
-     * Remove ekintzamotadet
+     * Get value
      *
-     * @param \AppBundle\Entity\Ekintzamotadet $ekintzamotadet
+     * @return string
      */
-    public function removeEkintzamotadet(\AppBundle\Entity\Ekintzamotadet $ekintzamotadet)
+    public function getValue()
     {
-        $this->ekintzamotadet->removeElement($ekintzamotadet);
+        return $this->value;
     }
 
     /**
-     * Get ekintzamotadet
+     * Set mota
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param string $mota
+     *
+     * @return Txostenadetval
      */
-    public function getEkintzamotadet()
+    public function setMota($mota)
     {
-        return $this->ekintzamotadet;
+        $this->mota = $mota;
+
+        return $this;
+    }
+
+    /**
+     * Get mota
+     *
+     * @return string
+     */
+    public function getMota()
+    {
+        return $this->mota;
     }
 }

@@ -1,0 +1,7 @@
+{{ form_start(edit_form, {'action': path('admin_ekintzamotadet_edit', {'id':ekintzamotadet.id}), 'method': 'POST','attr':{'class': 'frmEkintzamotadetEdit'} })}}
+
+    {{ form_errors(edit_form) }}
+
+    {{ form_widget(edit_form) }}
+
+{{ form_end(edit_form) }}

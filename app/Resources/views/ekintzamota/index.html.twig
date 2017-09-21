@@ -1,35 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block content_header %}<h1>Ekintza Motak <small>Zerrenda</small></h1>{% endblock %}
+{% block content_header %}
+    <h1>Ekintza Motak
+        <small>Zerrenda</small>
+    </h1>{% endblock %}
 
 {% block body %}
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Izena</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for ekintzaMotum in ekintzaMotas %}
-            <tr>
-                <td><a href="{{ path('admin_ekintzamota_show', { 'id': ekintzaMotum.id }) }}">{{ ekintzaMotum.name }}</a></td>
-                <td>
-                    <ul class="list-inline">
-                        <li>
-                            <a class="btn" href="{{ path('admin_ekintzamota_edit', { 'id': ekintzaMotum.id }) }}"><i class="fa fa-edit"></i> Aldatu</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </h3>
 
-    <ul class="list-unstyled">
-        <li>
-            <a class="btn btn-primary" href="{{ path('admin_ekintzamota_new') }}">Berria</a>
-        </li>
-    </ul>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Izena</th>
+                    <th>Ermuak</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for e in ekintzaMotas %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('admin_ekintzamota_show', { 'id': e.id }) }}">{{ e.name }}</a>
+                        </td>
+                        <td>
+                            <label class="badge bg-info">{{ e.ekintzamotadet | length }}</label>
+                        </td>
+                        <td>
+                            <ul class="list-inline">
+                                <li>
+                                    <a class="btn"
+                                       href="{{ path('admin_ekintzamota_edit', { 'id': e.id }) }}"><i
+                                                class="fa fa-edit"></i> Aldatu</a>
+                                </li>
+                                <li>
+                                    <a class="btn"
+                                       href="{{ path('admin_ekintzamota_show', { 'id': e.id }) }}"><i
+                                                class="fa fa-eye"></i> Ikusi</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+        <div class="box-footer">
+            <input class="btn btn-primary" type="submit" value="Gorde"/>
+        </div>
+
+    </div>
 {% endblock %}

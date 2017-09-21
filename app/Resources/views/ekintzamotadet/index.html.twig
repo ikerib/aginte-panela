@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ekintzamotadets list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Value</th>
+                <th>Mota</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Orden</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ekintzamotadet in ekintzamotadets %}
+            <tr>
+                <td><a href="{{ path('admin_ekintzamotadet_show', { 'id': ekintzamotadet.id }) }}">{{ ekintzamotadet.id }}</a></td>
+                <td>{{ ekintzamotadet.name }}</td>
+                <td>{{ ekintzamotadet.value }}</td>
+                <td>{{ ekintzamotadet.mota }}</td>
+                <td>{% if ekintzamotadet.created %}{{ ekintzamotadet.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if ekintzamotadet.updated %}{{ ekintzamotadet.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ ekintzamotadet.orden }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_ekintzamotadet_show', { 'id': ekintzamotadet.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_ekintzamotadet_edit', { 'id': ekintzamotadet.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_ekintzamotadet_new') }}">Create a new ekintzamotadet</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block content_header %}
+    <h1>
+        Txostena
+        <small>berria</small>
+    </h1>
+{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Txostena</a></li>
+        <li class="active">berria</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">Bete datuak eta sakatu gorde botoia</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        {{ form_start(form, {
+            'attr':
+                {'id': 'frmTxostenBerria','class': 'ajaxForm'}
+            })
+        }}
+        <div class="box-body">
+
+
+                {{ form_errors(form) }}
+
+                {{ form_row(form.fetxa) }}
+
+
+                <div class="show">
+                    {{ form_rest(form) }}
+                </div>
+
+        </div>
+        <div class="box-footer">
+            <input class="btn btn-primary" type="submit" value="Gorde" />
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock %}

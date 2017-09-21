@@ -67,9 +67,11 @@ baseJS = [
     './app/Resources/assets/js/bootstrap3-wysihtml5.all.min.js',
     './app/Resources/assets/js/jquery.slimscroll.min.js',
     './app/Resources/assets/js/fastclick.min.js',
+    './app/Resources/assets/js/bootbox.min.js',
     './app/Resources/assets/js/demoapp.js',
     './app/Resources/assets/js/dashboard.js',
     './app/Resources/assets/js/demo.js',
+    './app/Resources/assets/js/AdminLTE.js',
     './app/Resources/assets/js/app.js'
 ];
 

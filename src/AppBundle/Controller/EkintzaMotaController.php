@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\EkintzaMota;
+use AppBundle\Entity\Ekintzamotadet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -28,6 +29,7 @@ class EkintzaMotaController extends Controller
 
         return $this->render('ekintzamota/index.html.twig', array(
             'ekintzaMotas' => $ekintzaMotas,
+
         ));
     }
 
@@ -36,6 +38,8 @@ class EkintzaMotaController extends Controller
      *
      * @Route("/new", name="admin_ekintzamota_new")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
@@ -62,14 +66,24 @@ class EkintzaMotaController extends Controller
      *
      * @Route("/{id}", name="admin_ekintzamota_show")
      * @Method("GET")
+     * @param EkintzaMota $ekintzaMotum
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(EkintzaMota $ekintzaMotum)
     {
+        $em = $this->getDoctrine()->getManager();
+        $ekintzamotadet = $em->getRepository('AppBundle:Ekintzamotadet')->findAll();
+
         $deleteForm = $this->createDeleteForm($ekintzaMotum);
 
+        $deleteForms = [];
+        foreach ($ekintzamotadet as $e) {
+            $deleteForms[$e->getId()] = $this->createDeleteEkintzamotadetForm($e)->createView();
+        }
         return $this->render('ekintzamota/show.html.twig', array(
-            'ekintzaMotum' => $ekintzaMotum,
+            'ekintzamota' => $ekintzaMotum,
             'delete_form' => $deleteForm->createView(),
+            'deleteforms' => $deleteForms,
         ));
     }
 
@@ -78,6 +92,9 @@ class EkintzaMotaController extends Controller
      *
      * @Route("/{id}/edit", name="admin_ekintzamota_edit")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param EkintzaMota $ekintzaMotum
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, EkintzaMota $ekintzaMotum)
     {
@@ -103,6 +120,9 @@ class EkintzaMotaController extends Controller
      *
      * @Route("/{id}", name="admin_ekintzamota_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param EkintzaMota $ekintzaMotum
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, EkintzaMota $ekintzaMotum)
     {
@@ -132,5 +152,21 @@ class EkintzaMotaController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Creates a form to delete a ekintzadet entity.
+     *
+     * @param Ekintzamotadet $ekintzamotadet
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteEkintzamotadetForm(Ekintzamotadet $ekintzamotadet)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('admin_ekintzamotadet_delete', array('id' => $ekintzamotadet->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
     }
 }

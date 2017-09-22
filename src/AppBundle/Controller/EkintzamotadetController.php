@@ -42,7 +42,6 @@ class EkintzamotadetController extends Controller
      */
     public function newAction(Request $request, $ekintzamotaid='')
     {
-
         $em = $this->getDoctrine()->getManager();
         $ekintzamotadet = new Ekintzamotadet();
 
@@ -55,10 +54,7 @@ class EkintzamotadetController extends Controller
 
 
         $form = $this->createForm('AppBundle\Form\EkintzamotadetType', $ekintzamotadet);
-//        $form = $this->createForm('AppBundle\Form\EkintzamotadetType', $ekintzamotadet, array(
-//            'action' => $this->generateUrl('admin_ekintzamotadet_new', array('ekintzamotaid' => $ekintzamotaid)),
-//            'method' => 'POST'
-//        ));
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

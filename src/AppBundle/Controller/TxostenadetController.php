@@ -2,7 +2,10 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\EkintzaMota;
+use AppBundle\Entity\Ekintzamotadet;
 use AppBundle\Entity\Txostenadet;
+use AppBundle\Entity\Txostenadetval;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -36,19 +39,48 @@ class TxostenadetController extends Controller
      *
      * @Route("/new", name="txostenadet_new")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param $txostenaid
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $txostenaid = '')
     {
+        $em = $this->getDoctrine()->getManager();
         $txostenadet = new Txostenadet();
+
+        if ($txostenaid !== '') {
+            $txostena = $em->getRepository('AppBundle:Txostena')->find($txostenaid);
+            $txostenadet->setTxostena($txostena);
+        }
+
         $form = $this->createForm('AppBundle\Form\TxostenadetType', $txostenadet);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($txostenadet);
+
+            // Kopiatu ekintzamotadet => Txostenadetval-era
+            /** @var EkintzaMota $ek */
+            $ek = $txostenadet->getEkintzamota();
+
+            foreach ($ek->getEkintzamotadet() as $ekdt) {
+                /** @var Ekintzamotadet $ekdt */
+
+                /** @var Txostenadetval $tdv */
+                $tdv = new Txostenadetval();
+                $tdv->setTxostenadet($txostenadet);
+                $tdv->setMota($ekdt->getMota());
+                $tdv->setName($ekdt->getName());
+                $tdv->setOrden($ekdt->getOrden());
+                $em->persist($tdv);
+            }
+
+
             $em->flush();
 
-            return $this->redirectToRoute('txostenadet_show', array('id' => $txostenadet->getId()));
+            return $this->redirectToRoute('txostena_show', array('id' => $txostenadet->getTxostena()->getId()));
+
         }
 
         return $this->render('txostenadet/new.html.twig', array(
@@ -103,9 +135,13 @@ class TxostenadetController extends Controller
      *
      * @Route("/{id}", name="txostenadet_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param Txostenadet $txostenadet
+     * @return
      */
     public function deleteAction(Request $request, Txostenadet $txostenadet)
     {
+        $miid = $txostenadet->getTxostena()->getId();
         $form = $this->createDeleteForm($txostenadet);
         $form->handleRequest($request);
 
@@ -115,7 +151,7 @@ class TxostenadetController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('txostenadet_index');
+        return $this->redirectToRoute('txostenadet_show', array('id' => $miid));
     }
 
     /**

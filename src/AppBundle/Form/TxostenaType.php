@@ -17,10 +17,10 @@ class TxostenaType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('fetxa', DateTimeType::class, [
-                'label' => 'Fetxa: ',
-                'required' => true,
-            ])
+//            ->add('fetxa', DateTimeType::class, [
+//                'label' => 'Fetxa: ',
+//                'required' => true,
+//            ])
             ->add('fetxa', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,

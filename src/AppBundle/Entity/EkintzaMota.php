@@ -54,12 +54,12 @@ class EkintzaMota
     /*****************************************************************************************************************/
 
     /**
-     * @var txostenak[]
+     * @var txostenadet[]
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Txostena", mappedBy="txostenamota",cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Txostenadet", mappedBy="ekintzamota",cascade={"remove"})
      * @ORM\OrderBy({"name" = "ASC"})
      */
-    private $txostenak;
+    private $txostenadet;
 
 
     /**
@@ -77,7 +77,7 @@ class EkintzaMota
 
     public function __construct()
     {
-        $this->ekintzamotadet = new ArrayCollection();
+        $this->txostenadet = new ArrayCollection();
         $this->created = new \DateTime();
         $this->updated = new \DateTime();
     }
@@ -85,7 +85,6 @@ class EkintzaMota
     /*****************************************************************************************************************/
     /*****************************************************************************************************************/
     /*****************************************************************************************************************/
-
 
 
     /**
@@ -195,37 +194,37 @@ class EkintzaMota
     }
 
     /**
-     * Add txostenak
+     * Add txostenadet
      *
-     * @param \AppBundle\Entity\Txostena $txostenak
+     * @param \AppBundle\Entity\Txostenadet $txostenadet
      *
      * @return EkintzaMota
      */
-    public function addTxostenak(\AppBundle\Entity\Txostena $txostenak)
+    public function addTxostenadet(\AppBundle\Entity\Txostenadet $txostenadet)
     {
-        $this->txostenak[] = $txostenak;
+        $this->txostenadet[] = $txostenadet;
 
         return $this;
     }
 
     /**
-     * Remove txostenak
+     * Remove txostenadet
      *
-     * @param \AppBundle\Entity\Txostena $txostenak
+     * @param \AppBundle\Entity\Txostenadet $txostenadet
      */
-    public function removeTxostenak(\AppBundle\Entity\Txostena $txostenak)
+    public function removeTxostenadet(\AppBundle\Entity\Txostenadet $txostenadet)
     {
-        $this->txostenak->removeElement($txostenak);
+        $this->txostenadet->removeElement($txostenadet);
     }
 
     /**
-     * Get txostenak
+     * Get txostenadet
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getTxostenak()
+    public function getTxostenadet()
     {
-        return $this->txostenak;
+        return $this->txostenadet;
     }
 
     /**

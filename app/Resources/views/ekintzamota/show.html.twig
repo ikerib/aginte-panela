@@ -8,7 +8,7 @@
 {% endblock %}
 {% block breadcrumb %}
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Ekintza mota</a></li>
+        <li><a href="{{ path('admin_ekintzamota_index') }}"><i class="fa fa-dashboard"></i> Ekintza mota</a></li>
         <li class="active">ikusi</li>
     </ol>
 {% endblock %}
@@ -59,8 +59,8 @@
                                 </li>
                                 <li>
                                     {{ form_start(deleteforms[e.id],{'attr': {'id': e.id}}) }}
-                                    <a class="btnRemoveRow" data-id="{{ e.id }}" href="javascript:void(0);">
-                                        <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                    <a class="btn btn-default btnRemoveRow" data-id="{{ e.id }}" href="javascript:void(0);">
+                                        <i class="fa fa-trash text-danger" aria-hidden="true"></i> Ezabatu
                                     </a>
                                     {{ form_end(deleteforms[e.id]) }}
                                 </li>
@@ -92,7 +92,7 @@
             </table>
         </div>
         <div class="box-footer">
-            <input class="btn btn-primary" type="submit" value="Gorde" />
+            <p>Azken aldaketak {{ ekintzamota.updated | date('Y-m-d h:m:s') }}</p>
         </div>
 
     </div>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Ezeztatu</button>
-                    <button type="button" class="btn btn-gorde btn-primary">Gorde</button>
+                    <button type="button" class="btn btn-save btn-primary">Gorde</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -162,7 +162,7 @@
             });
 
             $('body').on('click', '.btnRemoveRow', function () {
-                var that = $(this);
+                const that = $(this);
                 bootbox.confirm({
                     title: "{{ 'Adi!' | trans }}",
                     message: "{{ 'Ziur zaude ezabatu nahi duzula?' | trans }}",

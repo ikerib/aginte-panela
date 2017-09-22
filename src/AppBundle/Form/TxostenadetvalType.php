@@ -3,10 +3,11 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TxostenadetType extends AbstractType
+class TxostenadetvalType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -15,11 +16,12 @@ class TxostenadetType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('txostena')
-            ->add('ekintzamota', null, array(
-                'placeholder' => 'Aukeratu bat',
-                'required' => true,
-                'label' => 'Ekintza Mota'
+            ->add('value')
+            ->add('mota')
+            ->add('txostenadet')
+            ->add('Gorde', ButtonType::class, array(
+                'label' => ' Gorde',
+                'attr' => array('class' => 'btn btn-primary btn-save-ajax'),
             ))
         ;
     }
@@ -30,7 +32,7 @@ class TxostenadetType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Txostenadet'
+            'data_class' => 'AppBundle\Entity\Txostenadetval'
         ));
     }
 
@@ -39,7 +41,7 @@ class TxostenadetType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_txostenadet';
+        return 'appbundle_txostenadetval';
     }
 
 

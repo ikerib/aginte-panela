@@ -1,16 +1,13 @@
-{% extends 'base.html.twig' %}
+{{ form_start(form, {'action': path('txostenadet_new'), 'method': 'POST','attr':{'id': 'frmTxostenadetBerria'} })}}
 
-{% block body %}
-    <h1>Txostenadet creation</h1>
+    {{  form_errors(form) }}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    {{ form_label(form.ekintzamota, 'Ekintza Mota:', {'label_attr': {'class': 'col-sm-3'}}) }}
+    {{ form_widget(form.ekintzamota)}}
 
-    <ul>
-        <li>
-            <a href="{{ path('txostenadet_index') }}">Back to the list</a>
-        </li>
-    </ul>
-{% endblock %}
+    <div class="hidden">
+        {{ form_rest(form) }}
+    </div>
+
+{{ form_end(form) }}
+

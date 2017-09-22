@@ -220,4 +220,52 @@ class Txostenadetval
     {
         return $this->txostenadet;
     }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     *
+     * @return Txostenadetval
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set mota
+     *
+     * @param string $mota
+     *
+     * @return Txostenadetval
+     */
+    public function setMota($mota)
+    {
+        $this->mota = $mota;
+
+        return $this;
+    }
+
+    /**
+     * Get mota
+     *
+     * @return string
+     */
+    public function getMota()
+    {
+        return $this->mota;
+    }
 }

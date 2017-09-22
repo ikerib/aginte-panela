@@ -62,14 +62,6 @@ class Txostena
     /*****************************************************************************************************************/
 
     /**
-     * @var \AppBundle\Entity\EkintzaMota
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\EkintzaMota", inversedBy="txostenak")
-     * @ORM\JoinColumn(name="ekintzamota_id", referencedColumnName="id",onDelete="CASCADE")
-     */
-    private $ekintzamota;
-
-    /**
      * @var txostenadet[]
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Txostenadet", mappedBy="txostena",cascade={"remove"})
@@ -97,6 +89,7 @@ class Txostena
     /*****************************************************************************************************************/
     /*** FIN ERLAZIOAK ***********************************************************************************************/
     /*****************************************************************************************************************/
+
 
     /**
      * Get id
@@ -260,29 +253,5 @@ class Txostena
     public function getTxostenadet()
     {
         return $this->txostenadet;
-    }
-
-    /**
-     * Set ekintzamota
-     *
-     * @param \AppBundle\Entity\EkintzaMota $ekintzamota
-     *
-     * @return Txostena
-     */
-    public function setEkintzamota(\AppBundle\Entity\EkintzaMota $ekintzamota = null)
-    {
-        $this->ekintzamota = $ekintzamota;
-
-        return $this;
-    }
-
-    /**
-     * Get ekintzamota
-     *
-     * @return \AppBundle\Entity\EkintzaMota
-     */
-    public function getEkintzamota()
-    {
-        return $this->ekintzamota;
     }
 }

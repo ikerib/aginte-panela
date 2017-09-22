@@ -1,0 +1,35 @@
+<div class="col-md-1"></div>
+<div class="col-md-10">
+    <div class="box">
+
+        {{ form_start(edit_form, {
+            'action': path('txostenadetval_edit',{'id': edit_form.vars.value.id}),
+            'method': 'POST','attr':{'id': 'frmTxostenadetvalEdit', 'class': 'ajaxForm'} })
+        }}
+
+        <div class="box-body">
+
+            <div class="row">
+                {{ form_errors(edit_form) }}
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    {{ form_label(edit_form.value, edit_form.name.vars.value, {'label_attr': {'class': ''}}) }}
+                    {{ form_widget(edit_form.value, {'attr': {'class': ''}}) }}
+                    <br />
+                    {{ form_widget(edit_form.Gorde) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden">
+        {{ form_rest(edit_form) }}
+    </div>
+    {{ form_end(edit_form) }}
+
+</div>
+<div class="col-md-1"></div>
+
+

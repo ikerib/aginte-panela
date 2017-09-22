@@ -9,7 +9,7 @@
 {% endblock %}
 {% block breadcrumb %}
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Txostena</a></li>
+        <li><a href="{{ path('txostena_index') }}"><i class="fa fa-dashboard"></i> Txostena</a></li>
         <li class="active">ikusi</li>
     </ol>
 {% endblock %}
@@ -19,34 +19,152 @@
         <div class="box-header with-border">
             <h3 class="box-title">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default">Berria</button>
+                    <button type="button" class="btn btn-default btnTxostenDetBerria">Berria</button>
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
                         {% for e in ekintzamotak %}
-                            <li><a href="#">{{ e.name }}</a></li>
+                            <li><a class="btnTxostenDetBerria" href="javascript:void(0);" data-ekintzamotaid="{{ e.id }}">{{ e.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
             </h3>
 
             <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i>
+                </button>
             </div>
         </div>
         <!-- /.box-header -->
-        <div class="box-body">
-
-
-
-        </div>
-        <div class="box-footer">
-            <input class="btn btn-primary" type="submit" value="Gorde" />
-        </div>
-
     </div>
+
+    {% for t in txostena.txostenadet %}
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">
+                    {{ t.ekintzamota.name }}
+                </h3>
+
+                <div class="box-tools pull-right">
+                    {{ form_start(deleteforms[t.id],{'attr': {'id': t.id}}) }}
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+
+                    {#<a class="btn btn-default btnRemoveRow" data-id="{{ e.id }}" href="javascript:void(0);">#}
+                        {#<i class="fa fa-trash text-danger" aria-hidden="true"></i> Ezabatu#}
+                    {#</a>#}
+                    {#<button type="button" class="btn btn-box-tool btnRemoveRow" data-id="{{ t.id }}" data-widget="remove"><i class="fa fa-remove"></i>#}
+                    <button type="button" class="btn btn-box-tool btnRemoveRow" data-id="{{ t.id }}"><i class="fa fa-remove"></i>
+                    </button>
+                    {{ form_end(deleteforms[t.id]) }}
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                {% for v in t.txostenadetval %}
+                    <div class="row">
+                        {{ render(controller('AppBundle:Txostenadetval:edit', {'id':  v.id})) }}
+                    </div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">&nbsp;</div>
+
+
+                {% endfor %}
+            </div>
+            <div class="box-footer">
+            </div>
+
+        </div>
+    {% endfor %}
+
+    <div class="modal fade" id="modal-txostenadet-new">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Eremu berria</h4>
+                </div>
+                <div class="modal-body">
+                    {{ render(controller('AppBundle:Txostenadet:new', {'txostenaid':  txostena.id})) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Ezeztatu</button>
+                    <button type="button" class="btn btn-save btn-primary">Gorde</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        $(function () {
+
+            $('.btnTxostenDetBerria').on('click', function () {
+                $('#modal-txostenadet-new').modal();
+            });
+
+
+            $('.btn-save-ajax').on('click', function () {
+
+                initAjaxForm();
+
+//                $(this).parent().prev().find('form').submit();
+                $(this).closest('form').submit();
+
+            });
+
+            $('.btn-save').on('click', function () {
+                //balidatu
+                const mota = $('#appbundle_txostenadet_ekintzamota').val();
+                let baliozkoa = true;
+
+                if (mota.length === 0) {
+                    alert("Mota beharrezkoa da");
+                    baliozkoa = false
+                    return
+                }
+
+                if (baliozkoa === true) {
+                    $(this).parent().prev().find('form').submit();
+                }
+
+            });
+
+            $('body').on('click', '.btnRemoveRow', function (e) {
+                e.preventDefault();
+                const that = $(this);
+                bootbox.confirm({
+                    title: "{{ 'Adi!' | trans }}",
+                    message: "{{ 'Ziur zaude ezabatu nahi duzula?' | trans }}",
+                    buttons: {
+                        cancel: {
+                            label: '<i class="fa fa-times"></i> {{ 'Ezeztatu' | trans }}'
+                        },
+                        confirm: {
+                            label: '<i class="fa fa-check"></i> {{ 'Onartu' | trans }}'
+                        }
+                    },
+                    callback: function (result) {
+                        if ( result === true ) {
+                            $(that).closest('form').submit();
+                        }
+                    }
+                });
+            });
+
+        })
+    </script>
 
 {% endblock %}

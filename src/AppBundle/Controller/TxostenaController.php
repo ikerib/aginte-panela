@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Txostena;
+use AppBundle\Entity\Txostenadet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -71,11 +72,18 @@ class TxostenaController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $ekintzamotak = $em->getRepository('AppBundle:EkintzaMota')->findAll();
+        $txostenadet = $txostena->getTxostenadet();
+
+        $deleteForms = [];
+        foreach ($txostenadet as $e) {
+            $deleteForms[$e->getId()] = $this->createDeleteTxostenadetForm($e)->createView();
+        }
 
         return $this->render('txostena/show.html.twig', array(
             'txostena' => $txostena,
             'ekintzamotak' => $ekintzamotak,
             'delete_form' => $deleteForm->createView(),
+            'deleteforms' => $deleteForms,
         ));
     }
 
@@ -138,5 +146,21 @@ class TxostenaController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Creates a form to delete a txostenadet entity.
+     *
+     * @param Txostenadet $txostenadet The txostenadet entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteTxostenadetForm(Txostenadet $txostenadet)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('txostenadet_delete', array('id' => $txostenadet->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
     }
 }

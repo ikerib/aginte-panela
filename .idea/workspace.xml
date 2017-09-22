@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcc30402-1cb4-4865-b74b-286f850f242d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/ekintzamota/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/ekintzamota/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/ekintzamota/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/ekintzamota/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/txostena/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/txostena/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/txostena/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/txostena/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/txostenadet/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/txostenadet/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/EkintzamotadetController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/EkintzamotadetController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/TxostenaController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/TxostenaController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/TxostenadetController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/TxostenadetController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/EkintzaMota.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/EkintzaMota.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Txostena.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Txostena.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Txostenadet.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Txostenadet.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Txostenadetval.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Txostenadetval.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/TxostenaType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/TxostenaType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/TxostenadetType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/TxostenadetType.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,8 +48,8 @@
       <file leaf-file-name="TxostenadetController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TxostenadetController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="650">
-              <caret line="161" column="50" lean-forward="true" selection-start-line="161" selection-start-column="50" selection-end-line="161" selection-end-column="50" />
+            <state relative-caret-position="482">
+              <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
               <folding>
                 <element signature="e#1263#2804#0#PHP" expanded="false" />
               </folding>
@@ -76,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EkintzamotadetController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="322">
-              <caret line="125" column="59" lean-forward="true" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="59" />
+              <caret line="125" column="59" lean-forward="false" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -506,12 +491,12 @@
       <workItem from="1505889549305" duration="6076000" />
       <workItem from="1505895648655" duration="3348000" />
       <workItem from="1505899315856" duration="32293000" />
-      <workItem from="1506056703099" duration="17428000" />
+      <workItem from="1506056703099" duration="17585000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59145000" />
+    <option name="totallyTimeSpent" value="59302000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2239" y="126" width="1922" height="1084" extended-state="6" />
@@ -544,7 +529,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -951,15 +936,15 @@
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EkintzamotadetController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
-          <caret line="125" column="59" lean-forward="true" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="59" />
+          <caret line="125" column="59" lean-forward="false" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TxostenadetController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="161" column="50" lean-forward="true" selection-start-line="161" selection-start-column="50" selection-end-line="161" selection-end-column="50" />
+        <state relative-caret-position="482">
+          <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
           <folding>
             <element signature="e#1263#2804#0#PHP" expanded="false" />
           </folding>

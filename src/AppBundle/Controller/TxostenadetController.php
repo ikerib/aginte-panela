@@ -151,7 +151,7 @@ class TxostenadetController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('txostenadet_show', array('id' => $miid));
+        return $this->redirectToRoute('txostena_show', array('id' => $miid));
     }
 
     /**

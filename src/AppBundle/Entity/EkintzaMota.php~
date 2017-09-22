@@ -86,4 +86,178 @@ class EkintzaMota
     /*****************************************************************************************************************/
     /*****************************************************************************************************************/
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return EkintzaMota
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return EkintzaMota
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     *
+     * @return EkintzaMota
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set orden
+     *
+     * @param integer $orden
+     *
+     * @return EkintzaMota
+     */
+    public function setOrden($orden)
+    {
+        $this->orden = $orden;
+
+        return $this;
+    }
+
+    /**
+     * Get orden
+     *
+     * @return integer
+     */
+    public function getOrden()
+    {
+        return $this->orden;
+    }
+
+    /**
+     * Add txostenadet
+     *
+     * @param \AppBundle\Entity\Txostenadet $txostenadet
+     *
+     * @return EkintzaMota
+     */
+    public function addTxostenadet(\AppBundle\Entity\Txostenadet $txostenadet)
+    {
+        $this->txostenadet[] = $txostenadet;
+
+        return $this;
+    }
+
+    /**
+     * Remove txostenadet
+     *
+     * @param \AppBundle\Entity\Txostenadet $txostenadet
+     */
+    public function removeTxostenadet(\AppBundle\Entity\Txostenadet $txostenadet)
+    {
+        $this->txostenadet->removeElement($txostenadet);
+    }
+
+    /**
+     * Get txostenadet
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTxostenadet()
+    {
+        return $this->txostenadet;
+    }
+
+    /**
+     * Add ekintzamotadet
+     *
+     * @param \AppBundle\Entity\Ekintzamotadet $ekintzamotadet
+     *
+     * @return EkintzaMota
+     */
+    public function addEkintzamotadet(\AppBundle\Entity\Ekintzamotadet $ekintzamotadet)
+    {
+        $this->ekintzamotadet[] = $ekintzamotadet;
+
+        return $this;
+    }
+
+    /**
+     * Remove ekintzamotadet
+     *
+     * @param \AppBundle\Entity\Ekintzamotadet $ekintzamotadet
+     */
+    public function removeEkintzamotadet(\AppBundle\Entity\Ekintzamotadet $ekintzamotadet)
+    {
+        $this->ekintzamotadet->removeElement($ekintzamotadet);
+    }
+
+    /**
+     * Get ekintzamotadet
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEkintzamotadet()
+    {
+        return $this->ekintzamotadet;
+    }
 }

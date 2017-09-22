@@ -83,7 +83,7 @@ class Txostenadetval
     {
         $this->created = new \DateTime();
         $this->updated = new \DateTime();
-        $this->name = "Detailea =>" . $this->txostena;
+        $this->name = "Detailea =>" . $this->name;
     }
 
     /*****************************************************************************************************************/

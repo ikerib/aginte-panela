@@ -1,26 +1,116 @@
 <?php
 
+/*
+ *     Iker Ibarguren <@ikerib>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+use FR3D\LdapBundle\Model\LdapUserInterface;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="fos_user")
+ * User.
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User extends BaseUser
+class User extends BaseUser implements LdapUserInterface
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $dn;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $department;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $displayname;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $nan;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $lanpostua;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $notes;
+
+    /**
+     * @ORM\Column(type="json_array", nullable=true)
+     */
+    private $members = [];
+
+    /*****************************************************************************************************************/
+    /*** ERLAZIOAK ***************************************************************************************************/
+    /*****************************************************************************************************************/
+
+
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        $this->members = [];
+
+        if (empty($this->roles)) {
+            $this->roles[] = 'ROLE_USER';
+        }
     }
+
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
+
+    /**
+     * Set Ldap Distinguished Name.
+     *
+     * @param string $dn Distinguished Name
+     */
+    public function setDn($dn)
+    {
+        $this->dn = $dn;
+    }
+
+    /**
+     * Get Ldap Distinguished Name.
+     *
+     * @return null|string Distinguished Name
+     */
+    public function getDn()
+    {
+        return $this->dn;
+    }
+
+    /*****************************************************************************************************************/
+    /*****************************************************************************************************************/
+    /*****************************************************************************************************************/
+
 }

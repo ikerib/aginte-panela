@@ -18,6 +18,21 @@
         </ul>
     </li>
 
+    <li class="header">TXOSTENAK</li>
+    <li class="treeview {% if app.request.get('_route') == 'txostena_index' or app.request.get('_route') == 'txostena_new' or app.request.get('_route') == 'txostena_show' %} active {% endif %}">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>Txostenak</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{% if app.request.get('_route') == 'txostena_index' %} active {% endif %}"><a href="{{ path('txostena_index') }}"><i class="fa fa-circle-o"></i> Txosten zerrenda</a></li>
+            <li class="{% if app.request.get('_route') == 'txostena_new' %} active {% endif %}"><a href="{{ path('txostena_new') }}"><i class="fa fa-circle-o"></i> Txosten berria</a></li>
+        </ul>
+    </li>
+
     <li class="header">PROIEKTUAK</li>
     <li class="treeview">
         <a href="#">

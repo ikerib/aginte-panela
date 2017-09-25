@@ -1,39 +1,64 @@
-{% extends 'base.html.twig' %}
+{% extends 'front.html.twig' %}
 
-{% block content_header %}<h1>Txostena<small>Zerrenda</small></h1>{% endblock %}
+{% block content_header %}
+    <h1>Txostena
+        <small>Zerrenda</small>
+    </h1>{% endblock %}
 
 {% block body %}
-    <h1>Txostenas list</h1>
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <a class="btn btn-primary" href="{{ path('txostena_new') }}"><i class="fa fa-plus-circle"></i>
+                    Txostena</a>
+            </h3>
 
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Fetxa</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for txostena in txostenas %}
-            <tr>
-                <td><a href="{{ path('txostena_show', { 'id': txostena.id }) }}">{{ txostena.id }}</a></td>
-                <td>{{ txostena.name }}</td>
-                <td>{% if txostena.fetxa %}{{ txostena.fetxa|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ txostena.orden }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('txostena_show', { 'id': txostena.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('txostena_edit', { 'id': txostena.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Fetxa</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for txostena in txostenas %}
+                    <tr>
+                        <td><a href="{{ path('txostena_show', { 'id': txostena.id }) }}">{{ txostena.id }}</a></td>
+                        <td>{{ txostena.name }}</td>
+                        <td>{% if txostena.fetxa %}{{ txostena.fetxa|date('Y-m-d') }}{% endif %}</td>
+                        <td>{{ txostena.orden }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('txostena_show', { 'id': txostena.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('txostena_edit', { 'id': txostena.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="box-footer">
+
+        </div>
+    </div>
+
 
 {% endblock %}

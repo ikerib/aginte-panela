@@ -1,27 +1,6 @@
-{% extends 'base.html.twig' %}
 
-{% block content_header %}<h1>Ekintza Motak <small>{{ ekintzaMotum.name }} aldatzen</small></h1>{% endblock %}
+    {{ form_start(edit_form, {'action': path('admin_ekintzamota_edit', {'id': ekintzaMotum.id}), 'method': 'POST','attr':{'id': 'frmEkintzamotaEdit'} })}}
 
-{% block body %}
-
-    {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <br>
-        <input class="btn btn-success" type="submit" value="Gorde" />
+
     {{ form_end(edit_form) }}
-
-    <br/>
-    <hr>
-    <br/>
-
-    <ul class="list-unstyled list-inline">
-        <li>
-            <a class="btn btn-primary" href="{{ path('admin_ekintzamota_index') }}">Zerrendara</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input class="btn btn-danger" type="submit" value="Ezabatu">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}

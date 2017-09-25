@@ -1,0 +1,64 @@
+<ul class="sidebar-menu">
+    <li class="header">MENU NAGUSIA</li>
+    <li class="{% if app.request.get('_route') == 'homepage'%} active {% endif %}"><a href="{{ path('homepage') }}"><i class="fa fa-circle-o text-aqua"></i> <span>Aginte Panela</span></a></li>
+    <li class="{% if app.request.get('_route') == 'admin_homepage'%} active {% endif %}"><a href="{{ path('admin_homepage') }}"><i class="fa fa-circle-o text-red"></i> <span>Admin gunea</span></a></li>
+
+    <li class="header">MANTENIMENTUAK</li>
+    <li class="treeview {% if app.request.get('_route') == 'admin_ekintzamota_index' or app.request.get('_route') == 'admin_ekintzamota_new' %} active {% endif %}">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>Ekintza motak</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{% if app.request.get('_route') == 'admin_ekintzamota_index' %} active {% endif %}"><a href="{{ path('admin_ekintzamota_index') }}"><i class="fa fa-circle-o"></i> Ekintza mota zerrenda</a></li>
+            <li class="{% if app.request.get('_route') == 'admin_ekintzamota_new' %} active {% endif %}"><a href="{{ path('admin_ekintzamota_new') }}"><i class="fa fa-circle-o"></i> Ekintza mota berria</a></li>
+        </ul>
+    </li>
+
+    <li class="header">PROIEKTUAK</li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-edit"></i>
+            <span>Proiektuak</span>
+            <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Poiektua AAAA</a></li>
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Poiektua BBBB</a></li>
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Poiektua CCCC</a></li>
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Poiektua DDDD</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Grafikak</span>
+            <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Grafika AAAA</a></li>
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Grafika BBBB</a></li>
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Grafika CCCC</a></li>
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Grafika DDDD</a></li>
+        </ul>
+    </li>
+
+
+    <li>
+        <a href="pages/calendar.html">
+            <i class="fa fa-calendar"></i> <span>Egutegia</span>
+            <span class="pull-right-container">
+                            <small class="label pull-right bg-red">3</small>
+                            <small class="label pull-right bg-blue">17</small>
+                        </span>
+        </a>
+    </li>
+
+</ul>

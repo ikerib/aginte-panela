@@ -18,7 +18,7 @@
         <div class="box-header with-border">
             <div class="pull-left">
                 <div class="btn-group">
-                    <button type="button" class="btn btnEremuBerria btn-default"><i class="fa fa-plus-circle"> </i> Eremu berria</button>
+                    <a class="btn btn-primary btnEremuBerria" href="javascript:void(0);"><i class="fa fa-plus-circle"> </i> Eremu berria</a>
                     {#<button type="button" class="btn btnEremuBerria btn-default dropdown-toggle" data-toggle="dropdown">#}
                         {#<span class="caret"></span>#}
                         {#<span class="sr-only">Toggle Dropdown</span>#}
@@ -92,7 +92,7 @@
             </table>
         </div>
         <div class="box-footer">
-            <p>Azken aldaketak {{ ekintzamota.updated | date('Y-m-d h:m:s') }}</p>
+            <p><small>Azken aldaketak {{ ekintzamota.updated | date('Y-m-d h:m:s') }} {{ ekintzamota.createdBy }}-k sortua {{ ekintzamota.updatedBy }}-k aldatua</small></p>
         </div>
 
     </div>

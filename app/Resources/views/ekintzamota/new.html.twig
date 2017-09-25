@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'front.html.twig' %}
 
 {% block content_header %}
     <h1>
@@ -15,11 +15,33 @@
 
 {% block body %}
 
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-    <br>
-        <input type="submit" value="Gorde" />
-    {{ form_end(form) }}
+        </h3>
 
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+        <br>
+            <input class="btn btn-primary" type="submit" value=" Gorde" />
+        {{ form_end(form) }}
+
+
+    </div>
+    <div class="box-footer">
+        {#<a class="btn btn-primary" href="{{ path('admin_ekintzamota_new') }}"><i class="fa fa-plus-circle"></i> Ekintza mota</a>#}
+    </div>
+
+</div>
 {% endblock %}

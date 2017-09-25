@@ -495,15 +495,15 @@ function (a) {
         c && c.preventDefault(), b.call(a(this), "toggle")
     })
 }(jQuery);
-$(function () {
-    'use strict'
-
-    $.get('/adsync', function (response) {
-        var col = $('<div />').html(response)
-
-        $('.content-wrapper .content').append(col)
-    })
-})
+// $(function () {
+//     'use strict'
+//
+//     $.get('/adsync', function (response) {
+//         var col = $('<div />').html(response)
+//
+//         $('.content-wrapper .content').append(col)
+//     })
+// })
 
 $(function () {
     'use strict'

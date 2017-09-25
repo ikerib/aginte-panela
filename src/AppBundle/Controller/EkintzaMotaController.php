@@ -105,7 +105,7 @@ class EkintzaMotaController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_ekintzamota_edit', array('id' => $ekintzaMotum->getId()));
+            return $this->redirectToRoute('admin_ekintzamota_index');
         }
 
         return $this->render('ekintzamota/edit.html.twig', array(

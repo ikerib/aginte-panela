@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'front.html.twig' %}
 
 {% block content_header %}
     <h1>Ekintza Motak
@@ -9,7 +9,7 @@
     <div class="box box-default">
         <div class="box-header with-border">
             <h3 class="box-title">
-
+                <a class="btn btn-primary" href="{{ path('admin_ekintzamota_new') }}"><i class="fa fa-plus-circle"></i> Ekintza mota</a>
             </h3>
 
             <div class="box-tools pull-right">
@@ -41,15 +41,41 @@
                         <td>
                             <ul class="list-inline">
                                 <li>
-                                    <a class="btn"
-                                       href="{{ path('admin_ekintzamota_edit', { 'id': e.id }) }}"><i
-                                                class="fa fa-edit"></i> Aldatu</a>
+                                    <a class="btn" data-toggle="modal" data-target="#modal-ekintzamotadet-edit{{ loop.index }}"
+                                       href="javascript:void(0);"><i class="fa fa-edit"></i> Aldatu</a>
                                 </li>
                                 <li>
                                     <a class="btn"
                                        href="{{ path('admin_ekintzamota_show', { 'id': e.id }) }}"><i
                                                 class="fa fa-eye"></i> Ikusi</a>
                                 </li>
+
+
+
+                                <div class="modal fade" id="modal-ekintzamotadet-edit{{ loop.index }}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">Eremu berria</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                {{ render(controller('AppBundle:Ekintzamota:edit', {'id':  e.id})) }}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Ezeztatu</button>
+                                                <button type="button" class="btn btn-edit btn-primary">Gorde</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal -->
+
+
+
                             </ul>
                         </td>
                     </tr>
@@ -60,8 +86,62 @@
 
         </div>
         <div class="box-footer">
-            <a class="btn btn-primary" href="{{ path('admin_ekintzamota_new') }}"><i class="fa fa-plus-circle"></i> Ekintza mota</a>
-        </div>
 
+        </div>
     </div>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+
+
+            $('.btn-edit').on('click', function () {
+                //balidatu
+                const izena = $('#appbundle_ekintzamota_name').val();
+                let baliozkoa = true;
+
+                if (izena.length === 0) {
+                    alert("Izena beharrezkoa da");
+                    baliozkoa = false;
+                    return
+                }
+
+                if (baliozkoa === true) {
+//                    $('#frmEkintzamotadetBerria').submit();
+                    $(this).parent().prev().find('form').submit();
+                }
+
+            });
+
+            $('body').on('click', '.btnRemoveRow', function () {
+                const that = $(this);
+                bootbox.confirm({
+                    title: "{{ 'Adi!' | trans }}",
+                    message: "{{ 'Ziur zaude ezabatu nahi duzula?' | trans }}",
+                    buttons: {
+                        cancel: {
+                            label: '<i class="fa fa-times"></i> {{ 'Ezeztatu' | trans }}'
+                        },
+                        confirm: {
+                            label: '<i class="fa fa-check"></i> {{ 'Onartu' | trans }}'
+                        }
+                    },
+                    callback: function (result) {
+                        if ( result === true ) {
+                            $(that).closest('form').submit();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}

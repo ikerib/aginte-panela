@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="{{ asset('css/_all-skins.min.css') }}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{ asset('css/blue.css') }}">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="{{ asset('css/morris.css') }}">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="{{ asset('css/jquery-jvectormap-1.2.2.css') }}">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="{{ asset('css/datepicker3.css') }}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ asset('css/daterangepicker.css') }}">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap3-wysihtml5.min.css') }}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="{{ path('homepage') }}" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>Aginte</b> Panela</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Aginte</b> Panela</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        {% include '_navbar_top.html.twig' %}
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>
+                        {% if is_granted("ROLE_USER") %}
+                            {{ app.user.username }}
+                        {% endif %}
+                    </p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            {% include '_menu_left.html.twig' %}
+
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            {% block content_header %}
+                <h1>
+                    Page Header
+                    <small>Optional description</small>
+                </h1>
+            {% endblock %}
+            {% block breadcrumb %}
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                    <li class="active">Here</li>
+                </ol>
+            {% endblock %}
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            {% block body %}
+            {% endblock %}
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 0.0.1
+        </div>
+        <strong>Pasaiako Udala</strong>
+    </footer>
+
+    <!-- Control Sidebar -->
+    {% include '_aside_right.html.twig' %}
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+{% block javascripts %}
+
+<!-- jQuery 2.2.3 -->
+<script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ asset('js/query-ui.min.js') }}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.6 -->
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<!-- Morris.js charts -->
+<script src="{{ asset('js/raphael-min.js') }}"></script>
+<script src="{{ asset('js/morris.min.js') }}"></script>
+<!-- Sparkline -->
+<script src="{{ asset('js/jquery.sparkline.min.js') }}"></script>
+<!-- jvectormap -->
+<script src="{{ asset('js/jquery-jvectormap-1.2.2.min.js') }}"></script>
+<script src="{{ asset('js/jquery-jvectormap-world-mill-en.js') }}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{ asset('js/jquery.knob.js') }}"></script>
+<!-- daterangepicker -->
+<script src="{{ asset('js/moment.min.js') }}"></script>
+<script src="{{ asset('js/daterangepicker.js') }}"></script>
+<!-- datepicker -->
+<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="{{ asset('js/bootstrap3-wysihtml5.all.min.js') }}"></script>
+<!-- Slimscroll -->
+<script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
+<!-- FastClick -->
+<script src="{{ asset('js/fastclick.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('js/demoapp.js') }}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('js/demo.js') }}"></script>
+
+{% endblock %}
+
+</body>
+</html>

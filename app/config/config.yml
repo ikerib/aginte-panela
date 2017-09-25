@@ -107,3 +107,11 @@ fr3d_ldap:
       filter: (&(ObjectClass=posixAccount))
    service:
       user_hydrator: app.ldap.user_hydrator
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            blameable: true
+            sluggable: true
+            timestampable: true
+            sortable: true

@@ -56,6 +56,20 @@ class Txostenadetval
     private $updated;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_created", referencedColumnName="id")
+     * @Gedmo\Blameable(on="create")
+     */
+    private $createdBy;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_updated", referencedColumnName="id")
+     * @Gedmo\Blameable(on="update")
+     */
+    private $updatedBy;
+    
+    /**
      * @var integer
      * @Gedmo\SortablePosition
      * @ORM\Column(name="orden", type="integer", nullable=true)
@@ -91,6 +105,7 @@ class Txostenadetval
     /*****************************************************************************************************************/
 
 
+
     /**
      * Get id
      *
@@ -123,6 +138,54 @@ class Txostenadetval
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     *
+     * @return Txostenadetval
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set mota
+     *
+     * @param string $mota
+     *
+     * @return Txostenadetval
+     */
+    public function setMota($mota)
+    {
+        $this->mota = $mota;
+
+        return $this;
+    }
+
+    /**
+     * Get mota
+     *
+     * @return string
+     */
+    public function getMota()
+    {
+        return $this->mota;
     }
 
     /**
@@ -198,6 +261,54 @@ class Txostenadetval
     }
 
     /**
+     * Set createdBy
+     *
+     * @param \AppBundle\Entity\User $createdBy
+     *
+     * @return Txostenadetval
+     */
+    public function setCreatedBy(\AppBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param \AppBundle\Entity\User $updatedBy
+     *
+     * @return Txostenadetval
+     */
+    public function setUpdatedBy(\AppBundle\Entity\User $updatedBy = null)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
+    }
+
+    /**
      * Set txostenadet
      *
      * @param \AppBundle\Entity\Txostenadet $txostenadet
@@ -219,53 +330,5 @@ class Txostenadetval
     public function getTxostenadet()
     {
         return $this->txostenadet;
-    }
-
-    /**
-     * Set value
-     *
-     * @param string $value
-     *
-     * @return Txostenadetval
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-
-        return $this;
-    }
-
-    /**
-     * Get value
-     *
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    /**
-     * Set mota
-     *
-     * @param string $mota
-     *
-     * @return Txostenadetval
-     */
-    public function setMota($mota)
-    {
-        $this->mota = $mota;
-
-        return $this;
-    }
-
-    /**
-     * Get mota
-     *
-     * @return string
-     */
-    public function getMota()
-    {
-        return $this->mota;
     }
 }

@@ -113,4 +113,148 @@ class User extends BaseUser implements LdapUserInterface
     /*****************************************************************************************************************/
     /*****************************************************************************************************************/
 
+
+    /**
+     * Set department
+     *
+     * @param string $department
+     *
+     * @return User
+     */
+    public function setDepartment($department)
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    /**
+     * Get department
+     *
+     * @return string
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
+
+    /**
+     * Set displayname
+     *
+     * @param string $displayname
+     *
+     * @return User
+     */
+    public function setDisplayname($displayname)
+    {
+        $this->displayname = $displayname;
+
+        return $this;
+    }
+
+    /**
+     * Get displayname
+     *
+     * @return string
+     */
+    public function getDisplayname()
+    {
+        return $this->displayname;
+    }
+
+    /**
+     * Set nan
+     *
+     * @param string $nan
+     *
+     * @return User
+     */
+    public function setNan($nan)
+    {
+        $this->nan = $nan;
+
+        return $this;
+    }
+
+    /**
+     * Get nan
+     *
+     * @return string
+     */
+    public function getNan()
+    {
+        return $this->nan;
+    }
+
+    /**
+     * Set lanpostua
+     *
+     * @param string $lanpostua
+     *
+     * @return User
+     */
+    public function setLanpostua($lanpostua)
+    {
+        $this->lanpostua = $lanpostua;
+
+        return $this;
+    }
+
+    /**
+     * Get lanpostua
+     *
+     * @return string
+     */
+    public function getLanpostua()
+    {
+        return $this->lanpostua;
+    }
+
+    /**
+     * Set notes
+     *
+     * @param string $notes
+     *
+     * @return User
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Get notes
+     *
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * Set members
+     *
+     * @param array $members
+     *
+     * @return User
+     */
+    public function setMembers($members)
+    {
+        $this->members = $members;
+
+        return $this;
+    }
+
+    /**
+     * Get members
+     *
+     * @return array
+     */
+    public function getMembers()
+    {
+        return $this->members;
+    }
 }

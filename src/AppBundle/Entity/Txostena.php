@@ -51,6 +51,20 @@ class Txostena
     private $updated;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_created", referencedColumnName="id")
+     * @Gedmo\Blameable(on="create")
+     */
+    private $createdBy;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_updated", referencedColumnName="id")
+     * @Gedmo\Blameable(on="update")
+     */
+    private $updatedBy;
+
+    /**
      * @var integer
      * @Gedmo\SortablePosition
      * @ORM\Column(name="orden", type="integer", nullable=true)
@@ -68,6 +82,8 @@ class Txostena
      * @ORM\OrderBy({"name" = "ASC"})
      */
     private $txostenadet;
+
+
 
     /**
      * Constructor.
@@ -89,6 +105,8 @@ class Txostena
     /*****************************************************************************************************************/
     /*** FIN ERLAZIOAK ***********************************************************************************************/
     /*****************************************************************************************************************/
+
+
 
 
     /**
@@ -219,6 +237,54 @@ class Txostena
     public function getOrden()
     {
         return $this->orden;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \AppBundle\Entity\User $createdBy
+     *
+     * @return Txostena
+     */
+    public function setCreatedBy(\AppBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param \AppBundle\Entity\User $updatedBy
+     *
+     * @return Txostena
+     */
+    public function setUpdatedBy(\AppBundle\Entity\User $updatedBy = null)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
     }
 
     /**

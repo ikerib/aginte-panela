@@ -10,7 +10,6 @@ parameters:
 
 framework:
     ide: "phpstorm://open?file=%%f&line=%%l"
-#    ide: "phpstorm://open?url=file://%f&line=%l"
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
@@ -115,3 +114,14 @@ stof_doctrine_extensions:
             sluggable: true
             timestampable: true
             sortable: true
+
+ivory_ck_editor:
+    configs:
+        my_config_1:
+            language: eu
+            toolbar: "my_toolbar_1"
+            uiColor: "#cccccc"
+    toolbars:
+        configs:
+            my_toolbar_1: [ [ 'Bold', 'Italic', 'Underline', '-','NumberedList', 'BulletedList', '-', 'Outdent', 'Indent' ]]
+            my_toolbar_2: [ [ "Source" ], "/", [ "Anchor" ], "/", [ "Maximize" ] ]

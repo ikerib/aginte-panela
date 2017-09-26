@@ -80,9 +80,10 @@ class TxostenadetvalController extends Controller
      * @Method({"GET", "POST"})
      * @param Request $request
      * @param Txostenadetval $txostenadetval
+     * @param string $loop
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Txostenadetval $txostenadetval)
+    public function editAction(Request $request, Txostenadetval $txostenadetval, $loop=0)
     {
         $deleteForm = $this->createDeleteForm($txostenadetval);
         $editForm = $this->createForm('AppBundle\Form\TxostenadetvalType', $txostenadetval);
@@ -96,6 +97,7 @@ class TxostenadetvalController extends Controller
 
         return $this->render('txostenadetval/edit.html.twig', array(
             'txostenadetval' => $txostenadetval,
+            'loop' => 'CKEditorID'.$loop,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

@@ -1,13 +1,31 @@
 {% extends 'front.html.twig' %}
 
 {% block body %}
-    <h1>Txostenadetval creation</h1>
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">
+       aaaa
+        </h3>
+
+        <div class="box-tools pull-right">
+
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
 
     {{ form_start(form) }}
+aaa
+        {{ form_rest(form.value_text) }}
+    bbbbbbb
         {{ form_widget(form) }}
         <input type="submit" value="Create" />
     {{ form_end(form) }}
+        /div>
+        <div class="box-footer">
+        </div>
 
+    </div>
     <ul>
         <li>
             <a href="{{ path('txostenadetval_index') }}">Back to the list</a>

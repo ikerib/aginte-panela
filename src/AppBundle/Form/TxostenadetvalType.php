@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -32,8 +33,9 @@ class TxostenadetvalType extends AbstractType
                     'data-provide' => 'datepicker'
                 ],
             ])
-            ->add('value_text', null, array(
-                'label_attr' => array('class' => 'control-label col-sm-12')
+//            ->add('value_text', CKEditorType::class,  array('config' => array('uiColor' => '#ffffff')))
+            ->add('value_text', CKEditorType::class, array(
+                'config_name' => 'my_config_1',
             ))
             ->add('mota')
             ->add('txostenadet')

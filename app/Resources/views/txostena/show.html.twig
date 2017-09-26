@@ -64,7 +64,7 @@
                 {% for v in t.txostenadetval %}
 
                     <div class="row">
-                        {{ render(controller('AppBundle:Txostenadetval:edit', {'id':  v.id})) }}
+                        {{ render(controller('AppBundle:Txostenadetval:edit', {'id':  v.id, 'loop': loop.index})) }}
                     </div>
 
                 {% endfor %}

@@ -20,7 +20,8 @@ class EkintzamotadetType extends AbstractType
                 'placeholder' => 'Aukeratu bat',
                 'required' => true,
                 'choices'  => array(
-                    'Text' => 'text',
+                    'Textu motxa' => 'text',
+                    'Textu luzea' => 'textarea',
                     'Zenbakia' => 'integer',
                     'Fetxa' => 'date',
                 )))

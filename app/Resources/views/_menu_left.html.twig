@@ -1,10 +1,18 @@
 <ul class="sidebar-menu">
     <li class="header">MENU NAGUSIA</li>
     <li class="{% if app.request.get('_route') == 'homepage'%} active {% endif %}"><a href="{{ path('homepage') }}"><i class="fa fa-circle-o text-aqua"></i> <span>Aginte Panela</span></a></li>
-    <li class="{% if app.request.get('_route') == 'admin_homepage'%} active {% endif %}"><a href="{{ path('admin_homepage') }}"><i class="fa fa-circle-o text-red"></i> <span>Admin gunea</span></a></li>
+    {% if not app.user %}
+        <li class="{% if app.request.get('_route') == 'admin_homepage'%} active {% endif %}"><a href="{{ path('admin_homepage') }}"><i class="fa fa-circle-o text-red"></i> <span>Admin gunea</span></a></li>
+    {% endif %}
 
     <li class="header">MANTENIMENTUAK</li>
-    <li class="treeview {% if app.request.get('_route') == 'admin_ekintzamota_index' or app.request.get('_route') == 'admin_ekintzamota_new' %} active {% endif %}">
+    <li class="treeview
+        {%
+            if app.request.get('_route') == 'admin_ekintzamota_index'
+            or app.request.get('_route') == 'admin_ekintzamota_new'
+            or app.request.get('_route') == 'admin_ekintzamota_show'
+        %}
+           active {% endif %}">
         <a href="#">
             <i class="fa fa-folder"></i>
             <span>Ekintza motak</span>
@@ -13,7 +21,7 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li class="{% if app.request.get('_route') == 'admin_ekintzamota_index' %} active {% endif %}"><a href="{{ path('admin_ekintzamota_index') }}"><i class="fa fa-circle-o"></i> Ekintza mota zerrenda</a></li>
+            <li class="{% if app.request.get('_route') == 'admin_ekintzamota_index' or app.request.get('_route') == 'admin_ekintzamota_show' %} active {% endif %}"><a href="{{ path('admin_ekintzamota_index') }}"><i class="fa fa-circle-o"></i> Ekintza mota zerrenda</a></li>
             <li class="{% if app.request.get('_route') == 'admin_ekintzamota_new' %} active {% endif %}"><a href="{{ path('admin_ekintzamota_new') }}"><i class="fa fa-circle-o"></i> Ekintza mota berria</a></li>
         </ul>
     </li>

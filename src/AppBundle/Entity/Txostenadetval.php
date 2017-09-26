@@ -37,6 +37,16 @@ class Txostenadetval
     private $value;
 
     /**
+     * @ORM\Column(name="value_fetxa", type="datetime", nullable=true)
+     */
+    private $value_fetxa;
+
+    /**
+     * @ORM\Column(name="value_text", type="text", nullable=true)
+     */
+    private $value_text;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="mota", type="string", length=255)
@@ -97,6 +107,7 @@ class Txostenadetval
     {
         $this->created = new \DateTime();
         $this->updated = new \DateTime();
+        $this->value_fetxa = new \DateTime();
         $this->name = "Detailea =>" . $this->name;
     }
 
@@ -330,5 +341,53 @@ class Txostenadetval
     public function getTxostenadet()
     {
         return $this->txostenadet;
+    }
+
+    /**
+     * Set valueFetxa
+     *
+     * @param \DateTime $valueFetxa
+     *
+     * @return Txostenadetval
+     */
+    public function setValueFetxa($valueFetxa)
+    {
+        $this->value_fetxa = $valueFetxa;
+
+        return $this;
+    }
+
+    /**
+     * Get valueFetxa
+     *
+     * @return \DateTime
+     */
+    public function getValueFetxa()
+    {
+        return $this->value_fetxa;
+    }
+
+    /**
+     * Set valueText
+     *
+     * @param string $valueText
+     *
+     * @return Txostenadetval
+     */
+    public function setValueText($valueText)
+    {
+        $this->value_text = $valueText;
+
+        return $this;
+    }
+
+    /**
+     * Get valueText
+     *
+     * @return string
+     */
+    public function getValueText()
+    {
+        return $this->value_text;
     }
 }

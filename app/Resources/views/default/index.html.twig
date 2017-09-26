@@ -1,17 +1,20 @@
 {% extends 'front.html.twig' %}
-{% block body %}
 
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            Aginte Panela
-            <small>Udaleko uneko egoera</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="{{ path('homepage') }}"><i class="fa fa-dashboard"></i> Hasiera</a></li>
-            <li class="active">Aginte panela</li>
-        </ol>
-    </section>
+
+{% block content_header %}
+    <h1>Aginte Panela
+        <small>ikusten</small>
+    </h1>
+{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('homepage') }}"><i class="fa fa-dashboard"></i> Aginte Panela</a></li>
+        <li class="active"> ikusten</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
 
     <!-- Main content -->
     <section class="content">

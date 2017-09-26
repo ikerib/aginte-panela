@@ -54,11 +54,6 @@
                     {{ form_start(deleteforms[t.id],{'attr': {'id': t.id}}) }}
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
-
-                    {#<a class="btn btn-default btnRemoveRow" data-id="{{ e.id }}" href="javascript:void(0);">#}
-                        {#<i class="fa fa-trash text-danger" aria-hidden="true"></i> Ezabatu#}
-                    {#</a>#}
-                    {#<button type="button" class="btn btn-box-tool btnRemoveRow" data-id="{{ t.id }}" data-widget="remove"><i class="fa fa-remove"></i>#}
                     <button type="button" class="btn btn-box-tool btnRemoveRow" data-id="{{ t.id }}"><i class="fa fa-remove"></i>
                     </button>
                     {{ form_end(deleteforms[t.id]) }}
@@ -67,12 +62,10 @@
             <!-- /.box-header -->
             <div class="box-body">
                 {% for v in t.txostenadetval %}
+
                     <div class="row">
                         {{ render(controller('AppBundle:Txostenadetval:edit', {'id':  v.id})) }}
                     </div>
-                    <div class="row">&nbsp;</div>
-                    <div class="row">&nbsp;</div>
-
 
                 {% endfor %}
             </div>
@@ -107,7 +100,7 @@
 {% endblock %}
 
 {% block javascripts %}
-
+    {{ parent() }}
     <script>
         $(function () {
 
@@ -120,7 +113,6 @@
 
                 initAjaxForm();
 
-//                $(this).parent().prev().find('form').submit();
                 $(this).closest('form').submit();
 
             });

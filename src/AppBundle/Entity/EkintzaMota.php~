@@ -48,14 +48,14 @@ class EkintzaMota
      * @ORM\JoinColumn(name="user_created", referencedColumnName="id")
      * @Gedmo\Blameable(on="create")
      */
-    private $createdBy;
+    protected $createdBy;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="user_updated", referencedColumnName="id")
      * @Gedmo\Blameable(on="update")
      */
-    private $updatedBy;
+    protected $updatedBy;
 
     /**
      * @var integer

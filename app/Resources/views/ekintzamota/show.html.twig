@@ -19,16 +19,7 @@
             <div class="pull-left">
                 <div class="btn-group">
                     <a class="btn btn-primary btnEremuBerria" href="javascript:void(0);"><i class="fa fa-plus-circle"> </i> Eremu berria</a>
-                    {#<button type="button" class="btn btnEremuBerria btn-default dropdown-toggle" data-toggle="dropdown">#}
-                        {#<span class="caret"></span>#}
-                        {#<span class="sr-only">Toggle Dropdown</span>#}
-                    {#</button>#}
-                    {#<ul class="dropdown-menu" role="menu">#}
-                        {#<li><a class=".btnEremuBerria" data-eremua="text" href="javascript:void(0);">Textua</a></li>#}
-                        {#<li><a class=".btnEremuBerria" data-eremua="integer" href="javascript:void(0);">Zenbakia</a></li>#}
-                        {#<li><a class=".btnEremuBerria" data-eremua="date" href="javascript:void(0);">Fetxa</a></li>#}
-                    {#</ul>#}
-                </div>
+                  </div>
             </div>
 
             <div class="box-tools pull-right">
@@ -124,6 +115,9 @@
 {% endblock %}
 
 {% block javascripts %}
+
+    {{ parent() }}
+
     <script>
         $(function () {
 
@@ -155,7 +149,6 @@
                 }
 
                 if (baliozkoa === true) {
-//                    $('#frmEkintzamotadetBerria').submit();
                     $(this).parent().prev().find('form').submit();
                 }
 

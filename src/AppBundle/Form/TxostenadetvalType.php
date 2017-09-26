@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,12 +17,29 @@ class TxostenadetvalType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('value')
+            ->add('value', null, array(
+                'label_attr' => array('class' => 'control-label col-sm-12')
+            ))
+
+            ->add('value_fetxa', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'label_attr' => [
+                    'class' => 'control-label col-sm-12'
+                ],
+                'attr' => [
+                    'class' => 'js-datepicker',
+                    'data-provide' => 'datepicker'
+                ],
+            ])
+            ->add('value_text', null, array(
+                'label_attr' => array('class' => 'control-label col-sm-12')
+            ))
             ->add('mota')
             ->add('txostenadet')
             ->add('Gorde', ButtonType::class, array(
                 'label' => ' Gorde',
-                'attr' => array('class' => 'btn btn-primary btn-save-ajax'),
+                'attr' => array('class' => 'btn btn-primary btn-save-ajax form-control'),
             ))
         ;
     }

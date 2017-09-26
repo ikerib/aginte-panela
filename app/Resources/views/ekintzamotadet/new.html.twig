@@ -3,6 +3,11 @@
 
     {{ form_errors(form) }}
 
-    {{ form_widget(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.mota) }}
+
+    <div class="hidden">
+        {{ form_rest(form) }}
+    </div>
 
 {{ form_end(form) }}

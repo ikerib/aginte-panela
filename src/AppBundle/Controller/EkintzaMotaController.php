@@ -27,9 +27,14 @@ class EkintzaMotaController extends Controller
 
         $ekintzaMotas = $em->getRepository('AppBundle:EkintzaMota')->findAll();
 
+        $deleteForms = [];
+        foreach ($ekintzaMotas as $e) {
+            $deleteForms[$e->getId()] = $this->createDeleteForm($e)->createView();
+        }
+
         return $this->render('ekintzamota/index.html.twig', array(
             'ekintzaMotas' => $ekintzaMotas,
-
+            'deleteforms' => $deleteForms
         ));
     }
 

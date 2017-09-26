@@ -37,6 +37,16 @@ class Txostenadetval
     private $value;
 
     /**
+     * @ORM\Column(name="value_fetxa", type="datetime", nullable=true)
+     */
+    private $value_fetxa;
+
+    /**
+     * @ORM\Column(name="value_text", type="text", nullable=true)
+     */
+    private $value_text;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="mota", type="string", length=255)
@@ -330,5 +340,29 @@ class Txostenadetval
     public function getTxostenadet()
     {
         return $this->txostenadet;
+    }
+
+    /**
+     * Set valueFetxa
+     *
+     * @param \DateTime $valueFetxa
+     *
+     * @return Txostenadetval
+     */
+    public function setValueFetxa($valueFetxa)
+    {
+        $this->value_fetxa = $valueFetxa;
+
+        return $this;
+    }
+
+    /**
+     * Get valueFetxa
+     *
+     * @return \DateTime
+     */
+    public function getValueFetxa()
+    {
+        return $this->value_fetxa;
     }
 }

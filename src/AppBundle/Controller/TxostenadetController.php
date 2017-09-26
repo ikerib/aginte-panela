@@ -94,6 +94,8 @@ class TxostenadetController extends Controller
      *
      * @Route("/{id}", name="txostenadet_show")
      * @Method("GET")
+     * @param Txostenadet $txostenadet
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Txostenadet $txostenadet)
     {
@@ -110,6 +112,9 @@ class TxostenadetController extends Controller
      *
      * @Route("/{id}/edit", name="txostenadet_edit")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param Txostenadet $txostenadet
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Txostenadet $txostenadet)
     {
@@ -137,7 +142,7 @@ class TxostenadetController extends Controller
      * @Method("DELETE")
      * @param Request $request
      * @param Txostenadet $txostenadet
-     * @return
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Txostenadet $txostenadet)
     {

@@ -78,6 +78,9 @@ class TxostenadetvalController extends Controller
      *
      * @Route("/{id}/edit", name="txostenadetval_edit")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param Txostenadetval $txostenadetval
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Txostenadetval $txostenadetval)
     {
@@ -103,6 +106,9 @@ class TxostenadetvalController extends Controller
      *
      * @Route("/{id}", name="txostenadetval_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param Txostenadetval $txostenadetval
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Txostenadetval $txostenadetval)
     {

@@ -123,44 +123,47 @@
 
 {% block javascripts %}
 
-<!-- jQuery 2.2.3 -->
-<script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+    <!-- jQuery 2.2.3 -->
+    <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
 
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('js/query-ui.min.js') }}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button);
-</script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<!-- Morris.js charts -->
-<script src="{{ asset('js/raphael-min.js') }}"></script>
-<script src="{{ asset('js/morris.min.js') }}"></script>
-<!-- Sparkline -->
-<script src="{{ asset('js/jquery.sparkline.min.js') }}"></script>
-<!-- jvectormap -->
-<script src="{{ asset('js/jquery-jvectormap-1.2.2.min.js') }}"></script>
-<script src="{{ asset('js/jquery-jvectormap-world-mill-en.js') }}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ asset('js/jquery.knob.js') }}"></script>
-<!-- daterangepicker -->
-<script src="{{ asset('js/moment.min.js') }}"></script>
-<script src="{{ asset('js/daterangepicker.js') }}"></script>
-<!-- datepicker -->
-<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="{{ asset('js/bootstrap3-wysihtml5.all.min.js') }}"></script>
-<!-- Slimscroll -->
-<script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
-<!-- FastClick -->
-<script src="{{ asset('js/fastclick.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('js/demoapp.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{{ asset('js/query-ui.min.js') }}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <!-- Morris.js charts -->
+    <script src="{{ asset('js/raphael-min.js') }}"></script>
+    <script src="{{ asset('js/morris.min.js') }}"></script>
+    <!-- Sparkline -->
+    <script src="{{ asset('js/jquery.sparkline.min.js') }}"></script>
+    <!-- jvectormap -->
+    <script src="{{ asset('js/jquery-jvectormap-1.2.2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="{{ asset('js/jquery.knob.js') }}"></script>
+    <!-- daterangepicker -->
+    <script src="{{ asset('js/moment.min.js') }}"></script>
+    <script src="{{ asset('js/daterangepicker.js') }}"></script>
+    <script src="{{ asset('js/bootbox.min.js') }}"></script>
 
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('js/demo.js') }}"></script>
+    <!-- datepicker -->
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="{{ asset('js/bootstrap3-wysihtml5.all.min.js') }}"></script>
+    <!-- Slimscroll -->
+    <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
+    <!-- FastClick -->
+    <script src="{{ asset('js/fastclick.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('js/demoapp.js') }}"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('js/demo.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
 {% endblock %}
 

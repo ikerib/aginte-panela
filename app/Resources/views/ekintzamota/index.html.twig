@@ -3,7 +3,15 @@
 {% block content_header %}
     <h1>Ekintza Motak
         <small>Zerrenda</small>
-    </h1>{% endblock %}
+    </h1>
+{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('admin_ekintzamota_index') }}"><i class="fa fa-dashboard"></i> Ekintza Mota</a></li>
+        <li class="active"> zerrenda</li>
+    </ol>
+{% endblock %}
 
 {% block body %}
     <div class="box box-default">
@@ -49,8 +57,13 @@
                                        href="{{ path('admin_ekintzamota_show', { 'id': e.id }) }}"><i
                                                 class="fa fa-eye"></i> Ikusi</a>
                                 </li>
-
-
+                                <li>
+                                {{ form_start(deleteforms[e.id],{'attr': {'id': e.id}}) }}
+                                    <a class="btn btnRemoveRow" data-id="{{ e.id }}" href="javascript:void(0);">
+                                        <i class="fa fa-trash text-danger" aria-hidden="true"></i> Ezabatu
+                                    </a>
+                                {{ form_end(deleteforms[e.id]) }}
+                                </li>
 
                                 <div class="modal fade" id="modal-ekintzamotadet-edit{{ loop.index }}">
                                     <div class="modal-dialog">

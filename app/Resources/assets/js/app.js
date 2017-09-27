@@ -7,12 +7,10 @@ $(function () {
 });
 
 function initAjaxForm() {
-    console.log("init");
     $('body').on('submit', '.ajaxForm', function (e) {
 
         e.preventDefault();
 
-        console.log("AJAXing");
 
         $.ajax({
             type: $(this).attr('method'),

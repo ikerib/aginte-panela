@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Txostenadetval
@@ -47,7 +48,11 @@ class Txostenadetval
     private $value_text;
 
     /**
-     * @ORM\Column(name="value_num", type="decimal", precision=14, scale=8, nullable=true)
+     * @Assert\Type(
+     *     type="float",
+     *     message="{{ value }} ez da {{ type }} motakoa."
+     * )
+     * @ORM\Column(name="value_num", type="float", precision=14, scale=8, nullable=true)
      */
     private $value_num;
 

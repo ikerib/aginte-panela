@@ -45,8 +45,8 @@ class TxostenadetvalType extends AbstractType
             ->add('mota')
             ->add('txostenadet')
             ->add('Gorde', ButtonType::class, array(
-                'label' => ' Gorde',
-                'attr' => array('class' => 'btn btn-primary btn-save-ajax form-control'),
+                'label' => ' ',
+                'attr' => array('class' => 'btn btn-primary btn-save-ajax form-control fa fa-save'),
             ))
         ;
     }

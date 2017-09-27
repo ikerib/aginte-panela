@@ -19,10 +19,10 @@
             {% if edit_form.mota.vars.value == 'textarea' %}
 
                 <div class="row">
-                    <div class="col-sm-10">
+                    <div class="col-sm-11">
                         {{ form_label(edit_form.value_text, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12'}}) }}
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         {{ form_widget(edit_form.Gorde) }}
                     </div>
                 </div>
@@ -36,6 +36,7 @@
 
             {% elseif edit_form.mota.vars.value == 'date'  %}
 
+                <div class="col-sm-1"></div>
                 <div class="col-sm-3">
                     {{ form_label(edit_form.value, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12 text-right'}}) }}
                 </div>
@@ -47,9 +48,10 @@
                         {{ form_widget(edit_form.value_fetxa, {'attr': {'class': ''}}) }}
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-1">
                     {{ form_widget(edit_form.Gorde) }}
                 </div>
+                <div class="col-sm-1"></div>
 
             {% elseif edit_form.mota.vars.value == 'integer'  %}
 
@@ -58,10 +60,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-10">
+                    <div class="col-sm-11">
                         {{ form_widget(edit_form.value_num, { 'type':'number','attr': {'class': 'form-control'}}) }}
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
+
                         {{ form_widget(edit_form.Gorde) }}
                     </div>
 
@@ -75,10 +78,10 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-10">
+                    <div class="col-sm-11">
                         {{ form_widget(edit_form.value, {'attr': {'class': 'form-control'}}) }}
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         {{ form_widget(edit_form.Gorde) }}
                     </div>
 

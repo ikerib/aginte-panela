@@ -47,6 +47,11 @@ class Txostenadetval
     private $value_text;
 
     /**
+     * @ORM\Column(name="value_num", type="decimal", precision=14, scale=8, nullable=true)
+     */
+    private $value_num;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="mota", type="string", length=255)
@@ -389,5 +394,29 @@ class Txostenadetval
     public function getValueText()
     {
         return $this->value_text;
+    }
+
+    /**
+     * Set valueNum
+     *
+     * @param string $valueNum
+     *
+     * @return Txostenadetval
+     */
+    public function setValueNum($valueNum)
+    {
+        $this->value_num = $valueNum;
+
+        return $this;
+    }
+
+    /**
+     * Get valueNum
+     *
+     * @return string
+     */
+    public function getValueNum()
+    {
+        return $this->value_num;
     }
 }

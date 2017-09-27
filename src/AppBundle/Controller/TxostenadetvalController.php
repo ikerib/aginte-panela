@@ -80,7 +80,7 @@ class TxostenadetvalController extends Controller
      * @Method({"GET", "POST"})
      * @param Request $request
      * @param Txostenadetval $txostenadetval
-     * @param string $loop
+     * @param int|string $loop
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Txostenadetval $txostenadetval, $loop=0)

@@ -6,6 +6,7 @@ use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -33,9 +34,13 @@ class TxostenadetvalType extends AbstractType
                     'data-provide' => 'datepicker'
                 ],
             ])
-//            ->add('value_text', CKEditorType::class,  array('config' => array('uiColor' => '#ffffff')))
             ->add('value_text', CKEditorType::class, array(
                 'config_name' => 'my_config_1',
+            ))
+            ->add('value_num', NumberType::class, array(
+                'label_attr' => array('class' => 'control-label col-sm-12'),
+                'invalid_message' => 'You entered an invalid value, it should include %num% letters',
+                'invalid_message_parameters' => array('%num%' => 6),
             ))
             ->add('mota')
             ->add('txostenadet')

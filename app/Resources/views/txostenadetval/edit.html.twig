@@ -17,12 +17,12 @@
 
         <div class="form-group">
             {% if edit_form.mota.vars.value == 'textarea' %}
+
                 <div class="row">
                     <div class="col-sm-10">
                         {{ form_label(edit_form.value_text, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12'}}) }}
                     </div>
                     <div class="col-sm-2">
-                        {#{{ form_widget(edit_form.Gorde, {'attr': {'class': 'form-control'}}) }}#}
                         {{ form_widget(edit_form.Gorde) }}
                     </div>
                 </div>
@@ -34,7 +34,8 @@
                 </div>
 
 
-            {% elseif edit_form.mota.vars.value == 'fetxa'  %}
+            {% elseif edit_form.mota.vars.value == 'date'  %}
+
                 <div class="col-sm-3">
                     {{ form_label(edit_form.value, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12 text-right'}}) }}
                 </div>
@@ -43,14 +44,32 @@
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        {{ form_widget(edit_form.value_fetxa, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_widget(edit_form.value_fetxa, {'attr': {'class': ''}}) }}
                     </div>
                 </div>
                 <div class="col-sm-3">
                     {{ form_widget(edit_form.Gorde) }}
                 </div>
 
+            {% elseif edit_form.mota.vars.value == 'integer'  %}
+
+                <div class="row">
+                    {{ form_label(edit_form.value, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12'}}) }}
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10">
+                        {{ form_widget(edit_form.value_num, { 'type':'number','attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_widget(edit_form.Gorde) }}
+                    </div>
+
+                </div>
             {% else %}
+
+
+
                 <div class="row">
                     {{ form_label(edit_form.value, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12'}}) }}
                 </div>

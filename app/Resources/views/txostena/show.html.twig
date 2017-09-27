@@ -104,6 +104,13 @@
     <script>
         $(function () {
 
+            $('input').blur(function(event) {
+                event.target.checkValidity();
+            }).bind('invalid', function(event) {
+                setTimeout(function() { $(event.target).focus();}, 50);
+            });
+
+
             $('.btnTxostenDetBerria').on('click', function () {
                 $('#modal-txostenadet-new').modal();
             });
@@ -113,7 +120,8 @@
 
                 initAjaxForm();
 
-                $(this).closest('form').submit();
+                const frm = $(this).closest('form');
+                frm.submit();
 
             });
 

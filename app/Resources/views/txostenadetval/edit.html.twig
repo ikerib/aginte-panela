@@ -20,7 +20,7 @@
 
                 <div class="row">
                     <div class="col-sm-11">
-                        {{ form_label(edit_form.value_text, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12'}}) }}
+                        {{ form_label(edit_form.value_text, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12'}, 'id':'my_' ~ edit_form.value_text.vars.id ~ '_' ~ loop }) }}
                     </div>
                     <div class="col-sm-1">
                         {{ form_widget(edit_form.Gorde) }}
@@ -29,23 +29,28 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        {{ form_widget(edit_form.value_text, {'attr': {'class': 'form-control'}, 'id':loop~'a'}) }}
+                        {{ form_widget(edit_form.value_text, {'attr': {'class': 'form-control'}, 'id':'my_' ~ edit_form.name.vars.id ~ '_' ~ loop }) }}
                     </div>
+                </div>
+
+                <div class="hidden">
+                    {{ form_row(edit_form.value_fetxa, {'attr': {'class': ''}, 'id':'my_' ~ edit_form.value_fetxa.vars.id ~ '_' ~ loop }) }}
+                    {{ form_row(edit_form.value_num, { 'type':'number','attr': {'class': 'form-control'}, 'id':'my_' ~ edit_form.value_num.vars.id ~ '_' ~ loop }) }}
+                    {{ form_row(edit_form.value, { 'type':'number','attr': {'class': 'form-control'}, 'id':'my_' ~ edit_form.value.vars.id ~ '_' ~ loop }) }}
                 </div>
 
 
             {% elseif edit_form.mota.vars.value == 'date'  %}
-
                 <div class="col-sm-1"></div>
                 <div class="col-sm-3">
-                    {{ form_label(edit_form.value, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12 text-right'}}) }}
+                    {{ form_label(edit_form.value_fetxa, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12 text-right'}, 'id':'my_' ~ edit_form.value_fetxa.vars.id ~ '_' ~ loop }) }}
                 </div>
                 <div class="col-sm-3">
                     <div class="input-group date">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        {{ form_widget(edit_form.value_fetxa, {'attr': {'class': ''}}) }}
+                        {{ form_widget(edit_form.value_fetxa, {'attr': {'class': ''}, 'id':'my_' ~ edit_form.value_fetxa.vars.id ~ '_' ~ loop }) }}
                     </div>
                 </div>
                 <div class="col-sm-1">
@@ -53,22 +58,33 @@
                 </div>
                 <div class="col-sm-1"></div>
 
-            {% elseif edit_form.mota.vars.value == 'integer'  %}
+                <div class="hidden">
+                    {{ form_row(edit_form.value_text, {'attr': {'class': 'form-control'}, 'id':'my_' ~ edit_form.value_text.vars.id ~ '_' ~ loop }) }}
+                    {{ form_row(edit_form.value_num, { 'type':'number','attr': {'class': 'form-control'}, 'id':'my_' ~ edit_form.value_num.vars.id ~ '_' ~ loop }) }}
+                    {{ form_row(edit_form.value, { 'type':'number','attr': {'class': 'form-control'}, 'id':'my_' ~ edit_form.value.vars.id ~ '_' ~ loop }) }}
+                </div>
 
+            {% elseif edit_form.mota.vars.value == 'integer'  %}
                 <div class="row">
-                    {{ form_label(edit_form.value, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12'}}) }}
+                    {{ form_label(edit_form.value, edit_form.name.vars.value, {'label_attr': {'class': 'col-sm-12'}, 'id':'my_' ~ edit_form.value.vars.id ~ '_' ~ loop }) }}
                 </div>
 
                 <div class="row">
                     <div class="col-sm-11">
-                        {{ form_widget(edit_form.value_num, { 'type':'number','attr': {'class': 'form-control'}}) }}
+                        {{ form_widget(edit_form.value_num, { 'type':'number','attr': {'class': 'form-control'}, 'id':'my_' ~ edit_form.value_num.vars.id ~ '_' ~ loop }) }}
                     </div>
                     <div class="col-sm-1">
 
                         {{ form_widget(edit_form.Gorde) }}
                     </div>
-
                 </div>
+
+                <div class="hidden">
+                    {{ form_row(edit_form.value_fetxa, {'attr': {'class': ''}, 'id':'my_' ~ edit_form.value_fetxa.vars.id ~ '_' ~ loop }) }}
+                    {{ form_row(edit_form.value_text, { 'type':'number','attr': {'class': 'form-control'}, 'id':'my_' ~ edit_form.value_text.vars.id ~ '_' ~ loop }) }}
+                    {{ form_row(edit_form.value, { 'type':'number','attr': {'class': 'form-control'}, 'id':'my_' ~ edit_form.value.vars.id ~ '_' ~ loop }) }}
+                </div>
+
             {% else %}
 
 
@@ -87,12 +103,17 @@
 
                 </div>
 
+                <div class="hidden">
+                    {{ form_row(edit_form.value_fetxa, {'attr': {'class': ''}, 'id':'my_' ~ edit_form.value_fetxa.vars.id ~ '_' ~ loop }) }}
+                    {{ form_row(edit_form.value_text, { 'type':'number','attr': {'class': 'form-control'}, 'id':'my_' ~ edit_form.value_text.vars.id ~ '_' ~ loop }) }}
+                    {{ form_row(edit_form.value_num, { 'type':'number','attr': {'class': 'form-control'}, 'id':'my_' ~ edit_form.value_num.vars.id ~ '_' ~ loop }) }}
+                </div>
 
             {% endif %}
         </div>
 
-    <div class="hidden">
-        <div style="border: 1px solid #000000">
+    <div class="">
+        <div class="hidden" style="border: 1px solid #000000">
 
             {{ form_rest(edit_form) }}
         </div>

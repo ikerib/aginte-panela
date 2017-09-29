@@ -15,6 +15,24 @@
 {% endblock %}
 
 {% block body %}
+
+    <div id="alertdiv" class="row ">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div id="alertError" class="alert alert-danger alert-dismissible" style="display: none;" >
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Ups!</h4>
+                Arazo bat egon da datuak grabatzerakoan. Begiratu datuak ongi sartzen ari zarela eta saiatu berriro.
+            </div>
+            <div id="alertSuccess" class="alert alert-success alert-dismissible" style="display: none;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-check"></i> Oharra!</h4>
+                Datuak ongi grabatuak izan dira.
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
     <div class="box box-default">
         <div class="box-header with-border">
             <h3 class="box-title">
@@ -118,10 +136,51 @@
 
             $('.btn-save-ajax').on('click', function () {
 
-                initAjaxForm();
-
+//                initAjaxForm();
+//
                 const frm = $(this).closest('form');
-                frm.submit();
+//                console.log(frm);
+//                frm.submit();
+
+                $.ajax({
+                    type: $(frm).attr('method'),
+                    url: $(frm).attr('action'),
+                    data: $(frm).serialize()
+                })
+                    .done(function (data) {
+                        if (typeof data.message !== 'undefined') {
+                            alert(data.message);
+                        }
+
+                        console.log("appenddddd");
+
+                        $('#alertdiv').append(' ' +
+                            '<div class="col-sm-3"></div>\n' +
+                            '        <div class="col-sm-6">\n' +
+                            '            <div id="alertSuccess" class="alert alert-success alert-dismissible">\n' +
+                            '                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>\n' +
+                            '                <h4><i class="icon fa fa-check"></i> Oharra!</h4>\n' +
+                            '                Datuak ongi grabatuak izan dira.\n' +
+                            '            </div>\n' +
+                            '        </div>\n' +
+                            '        <div class="col-sm-3">' +
+                            '</div>').delay(1500).fadeOut();
+
+                    })
+                    .fail(function (jqXHR, textStatus, errorThrown) {
+                        if (typeof jqXHR.responseJSON !== 'undefined') {
+                            if (jqXHR.responseJSON.hasOwnProperty('form')) {
+                                $('#form_body').html(jqXHR.responseJSON.form);
+                            }
+
+                            $('.form_error').html(jqXHR.responseJSON.message);
+
+                        } else {
+
+                            alert(errorThrown);
+                        }
+
+                    });
 
             });
 

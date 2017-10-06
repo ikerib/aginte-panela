@@ -198,11 +198,11 @@ gulp.task('sass:dev', ['css:dev', 'scss-lint'], function () {
 });
 
 gulp.task('sass:prod', function () {
-    gulp.src(freeCSS)
-        .pipe(gulp.dest('web/css/'));
+    // gulp.src(freeCSS)
+    //     .pipe(gulp.dest('web/css/'));
 
-    gulp.src(freeIMG)
-        .pipe(gulp.dest('web/img/'));
+    // gulp.src(freeIMG)
+    //     .pipe(gulp.dest('web/img/'));
 
 
     return merge (

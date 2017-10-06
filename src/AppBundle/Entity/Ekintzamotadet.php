@@ -25,21 +25,21 @@ class Ekintzamotadet
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=191)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="value", type="string", length=255, nullable=true)
+     * @ORM\Column(name="value", type="string", length=191, nullable=true)
      */
     private $value;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mota", type="string", length=255)
+     * @ORM\Column(name="mota", type="string", length=191)
      */
     private $mota;
 
